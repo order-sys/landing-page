@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Restaurant Order System | نظام طلبات المطعم عبر QR</title>
+  <meta name="description" content="نظام طلبات المطعم عبر QR: منيو رقمية، سلة وملاحظات، طلب خدمة (نادل/نارا/حساب)، لوحة الموظفين لإرسال الطلب للمطبخ، ولوحة مطبخ للطلبات قيد التحضير." />
+
+  <style>
+    :root{
+      --bg:#070d18;
+      --panel: rgba(255,255,255,.05);
+      --panel2: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,.70);
+
+      /* نفس روح واجهاتكم */
+      --green: #22c55e;
+      --green2:#16a34a;
+      --blue: #3b82f6;
+      --warn:#f59e0b;
+
+      --shadow: 0 22px 70px rgba(0,0,0,.50);
+      --r: 18px;
+      --r2: 24px;
+      --max: 1150px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(34,197,94,.16), transparent 58%),
+        radial-gradient(900px 520px at 90% 20%, rgba(59,130,246,.10), transparent 60%),
+        radial-gradient(900px 520px at 60% 90%, rgba(245,158,11,.08), transparent 60%),
+        var(--bg);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    /* NAV */
+    .nav{
+      position: sticky; top:0; z-index:50;
+      background: rgba(7,13,24,.62);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0; gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .badge{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      font-weight:900;
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(59,130,246,.75));
+      box-shadow: 0 16px 40px rgba(34,197,94,.20);
+    }
+    .brand .t1{font-weight:900}
+    .brand .t2{color:var(--muted);font-size:13px;font-weight:700}
+
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap}
+    .nav-links a{
+      color:var(--muted);
+      padding:8px 10px;border-radius:12px;border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding:11px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      transition: .18s transform, .18s filter, .18s background, .18s border-color;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+    }
+    .btn-primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(22,163,74,.85));
+      box-shadow: 0 16px 50px rgba(34,197,94,.18);
+    }
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-blue{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(99,102,241,.85));
+      box-shadow: 0 16px 50px rgba(59,130,246,.14);
+    }
+
+    /* HERO */
+    .hero{padding:58px 0 24px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap:20px;
+      align-items:stretch;
+    }
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 12px;border-radius:999px;
+      background: rgba(34,197,94,.10);
+      border: 1px solid rgba(34,197,94,.20);
+      color: var(--text);
+      font-weight:900;
+      margin-bottom:14px;
+    }
+    .hero h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .hero p{margin:0 0 18px;color:var(--muted);font-size:16px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .stat{
+      min-width:160px;
+      padding:12px 14px;
+      border-radius:16px;
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+    }
+    .stat .num{font-weight:900;font-size:18px}
+    .stat .lbl{color:var(--muted);font-size:13px}
+
+    /* RIGHT HERO SHOWCASE */
+    .showcase{
+      border-radius: var(--r2);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height: 420px;
+    }
+    .showcase::before{
+      content:"";
+      position:absolute; inset:-80px -70px auto auto;
+      width:240px;height:240px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(34,197,94,.25), transparent 62%);
+      pointer-events:none;
+      filter: blur(2px);
+    }
+    .showcase-top{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      background: rgba(7,13,24,.35);
+    }
+    .dots{display:flex;gap:6px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+    .showcase-body{padding:16px}
+
+    /* SECTIONS */
+    .section{padding:44px 0}
+    .section h2{margin:0 0 10px;font-size: clamp(22px, 2.2vw, 34px)}
+    .section p{margin:0;color:var(--muted)}
+
+    /* Cards */
+    .grid-3{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;margin-top:18px}
+    .card{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      padding:16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.18);
+    }
+    .icon{
+      width:44px;height:44px;border-radius:16px;
+      display:grid;place-items:center;
+      background: rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.20);
+      font-weight:900;
+      margin-bottom:12px;
+    }
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Flow */
+    .flow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:18px;
+      align-items:stretch;
+    }
+    .steps{display:grid;gap:12px}
+    .step{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:14px;
+      border-radius: var(--r);
+      background: var(--panel2);
+      border:1px solid var(--line);
+    }
+    .step .n{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      font-weight:900;
+      background: rgba(59,130,246,.12);
+      border:1px solid rgba(59,130,246,.22);
+    }
+    .step b{display:block;margin-bottom:2px}
+    .step span{color:var(--muted);font-size:14px}
+
+    /* Screenshots */
+    .shots, .shots-mini{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .shots-mini{grid-template-columns: repeat(2, 1fr)}
+    .shot{
+      position:relative;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      overflow:hidden;
+      padding:0;
+      cursor:pointer;
+      box-shadow: 0 14px 40px rgba(0,0,0,.18);
+      transition:.18s transform, .18s filter, .18s border-color;
+      text-align:right;
+    }
+    .shot:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.22);
+      filter: brightness(1.03);
+    }
+    .shot img{
+      width:100%;
+      height: 175px;
+      object-fit: cover;
+      display:block;
+    }
+    .shot.big{ grid-column: span 2; }
+    .shot.big img{ height: 265px; }
+    .shot span{
+      position:absolute;
+      left:12px; top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
+      background: rgba(0,0,0,.40);
+      border:1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+    }
+
+    /* CTA */
+    .cta{
+      margin-top:16px;
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(900px 260px at 25% 30%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(700px 240px at 80% 45%, rgba(59,130,246,.12), transparent 60%),
+        rgba(255,255,255,.05);
+      padding:22px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;
+      box-shadow: var(--shadow);
+    }
+    .cta h3{margin:0 0 4px}
+    .cta p{margin:0;color:var(--muted);font-size:14px}
+
+    /* FAQ */
+    .faq{margin-top:18px;display:grid;gap:10px}
+    details{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      padding:12px 14px;
+    }
+    summary{cursor:pointer;font-weight:900}
+    details p{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+    /* Contact form */
+    .form{
+      margin-top:18px;
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: var(--r2);
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    label .lbl{color:var(--muted);font-size:13px;margin-bottom:6px}
+    input, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{resize:vertical}
+    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+    /* Footer */
+    footer{
+      padding:26px 0 36px;
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.12);
+      margin-top: 28px;
+    }
+    .foot{
+      display:flex;gap:14px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Toast */
+    #toast{
+      position:fixed; left:18px; bottom:18px; z-index:99;
+      padding:12px 14px; border-radius:14px;
+      background: rgba(0,0,0,.58);
+      border:1px solid rgba(255,255,255,.16);
+      color: var(--text);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      display:none;
+      max-width: 92vw;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; z-index:999;
+      background: rgba(0,0,0,.74);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .lightbox.open{display:flex}
+    .lightbox .box{
+      width:min(1000px, 96vw);
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(7,13,24,.70);
+      box-shadow: 0 20px 90px rgba(0,0,0,.6);
+      overflow:hidden;
+    }
+    .lightbox img{
+      width:100%;
+      max-height: 78vh;
+      object-fit: contain;
+      display:block;
+      background: rgba(0,0,0,.25);
+    }
+    .lightbox .bar{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 12px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.85);
+      font-weight:900;
+    }
+    .lightbox .x{
+      border:none; cursor:pointer;
+      padding:8px 10px; border-radius:12px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.92);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .nav-links{display:none}
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .flow{grid-template-columns:1fr}
+      .shots{grid-template-columns:1fr}
+      .shots-mini{grid-template-columns:1fr}
+      .shot.big{grid-column:auto}
+      .shot img{height:210px}
+      .shot.big img{height:230px}
+      .form-grid{grid-template-columns:1fr}
+      .cta{flex-direction:column;align-items:stretch}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="badge">R</div>
+          <div>
+            <div class="t1">Restaurant Order System</div>
+            <div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#features">المميزات</a>
+          <a href="#screens">لقطات</a>
+          <a href="#flow">التدفق</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">تواصل</a>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          
+          <a class="btn btn-primary" href="#contact">احجز ديمو</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div>
+          <div class="pill">⚡ من الطاولة للمطبخ خلال ثواني — بدون فوضى</div>
+
+          <h1>نظام QR Ordering منظم: الزبون يطلب… الطاقم يراجع… والمطبخ يطبخ.</h1>
+
+     
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">احجز ديمو مجاني</a>
+            <a class="btn" href="#features">شوف المميزات</a>
+            <a class="btn btn-blue" href="#screens">واجهات النظام</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="num">Staff → Kitchen</div>
+              <div class="lbl">تدفق منظم قبل دخول المطبخ</div>
+            </div>
+            <div class="stat">
+              <div class="num">طلب خدمة</div>
+              <div class="lbl">نادل + نارا + حساب</div>
+            </div>
+            <div class="stat">
+              <div class="num">بدون تطبيق</div>
+              <div class="lbl">للزبون: متصفح فقط</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO SHOWCASE -->
+        <div class="showcase" id="screens">
+          <div class="showcase-top">
+            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div style="font-weight:900;color:var(--muted);font-size:13px">واجهات أساسية</div>
+          </div>
+          <div class="showcase-body">
+            <div class="shots-mini">
+              <button class="shot" onclick="openLightbox('assets/menu.jpg','واجهة المنيو')">
+                <img src="assets/menu.jpg" alt="واجهة المنيو">
+                <span>منيو QR</span>
+              </button>
+              <button class="shot" onclick="openLightbox('assets/cart.jpg','السلة وملاحظة الطلب')">
+                <img src="assets/cart.jpg" alt="السلة">
+                <span>السلة</span>
+              </button>
+              <button class="shot" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
+                <img src="assets/staff-orders.jpg" alt="لوحة الموظفين">
+                <span>لوحة الموظفين</span>
+              </button>
+              <button class="shot" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
+                <img src="assets/kitchen.jpg" alt="لوحة المطبخ">
+                <span>لوحة المطبخ</span>
+              </button>
+            </div>
+
+           
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="container">
+      <h2>المميزات</h2>
+      <p>بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">QR</div>
+          <h3>منيو QR مع بحث وتبويبات</h3>
+          <p>واجهة منظمة للأصناف (Meals/Drinks/Desserts…) + صور + أسعار + تحكم بالكمية.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧺</div>
+          <h3>سلة احترافية + ملاحظة الطلب</h3>
+          <p>تعديل الكميات، حذف عناصر، وإضافة ملاحظة (مثال: بدون بصل…)، ثم إرسال الطلب.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>تأكيد إرسال الطلب</h3>
+          <p>بعد الإرسال: شاشة نجاح + معلومات الطلب + اختصارات (عودة للمنيو / خدمة / سلة).</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛎️</div>
+          <h3>طلبات خدمة من الطاولة</h3>
+          <p>
+            شاشة “طلب خدمة” بثلاثة أزرار واضحة:
+            <b>استدعاء النادل</b> / <b>نارا (الشيشة)</b> / <b>الحساب</b>.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">👥</div>
+          <h3>لوحة الموظفين (Staff Board)</h3>
+          <p>
+            تظهر فيها <b>الطلبات الجديدة</b> مع رقم الطاولة والإجمالي والوقت،
+            وأزرار: <b>تفاصيل</b> / <b>إرسال للمطبخ</b> / <b>إلغاء</b>.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🍳</div>
+          <h3>لوحة المطبخ (Kitchen Board)</h3>
+          <p>
+            تعرض فقط الطلبات التي <b>أرسلها الطاقم للمطبخ</b>،
+            مع حالة <b>قيد التحضير</b> وزر <b>تم الإنجاز</b>.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <div>
+          <h3>ميزة قوية: فصل الطلبات عن المطبخ حتى يعتمدها الطاقم</h3>
+          <p>هذا يقلل الأخطاء، ويمنع وصول الطلبات الناقصة للمطبخ، ويجعل الخدمة أكثر انسيابية.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#contact">احجز ديمو</a>
+          <a class="btn btn-blue" href="#screenshots">شوف كل اللقطات</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS (FULL) -->
+  <section class="section" id="screenshots">
+    <div class="container">
+      <h2>واجهات النظام</h2>
+     
+
+      <div class="shots" style="margin-top:18px">
+        <button class="shot big" onclick="openLightbox('assets/menu.jpg','واجهة المنيو (QR)')">
+          <img src="assets/menu.jpg" alt="واجهة المنيو">
+          <span>منيو QR</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/cart.jpg','السلة + ملاحظة الطلب + إرسال')">
+          <img src="assets/cart.jpg" alt="السلة">
+          <span>السلة</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/order-confirm.jpg','تم إرسال الطلب بنجاح')">
+          <img src="assets/order-confirm.jpg" alt="تأكيد الطلب">
+          <span>تأكيد الإرسال</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/send-service.jpg','طلب خدمة (نادل/نارا/حساب)')">
+          <img src="assets/send-service.jpg" alt="طلب خدمة">
+          <span>طلب خدمة</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
+          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات">
+          <span>لوحة الموظفين</span>
+        </button>
+		<button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - الطلبات الجديدة')">
+          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
+          <span>تفاصيل الطلب</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/staff-services.jpg','لوحة الموظفين - النداءات النشطة')">
+          <img src="assets/staff-services.jpg" alt="لوحة الموظفين - النداءات">
+          <span>نداءات الخدمة</span>
+        </button>
+
+        <button class="shot big" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
+          <img src="assets/kitchen.jpg" alt="لوحة المطبخ">
+          <span>لوحة المطبخ</span>
+        </button>
+
+        <button class="shot" onclick="openLightbox('assets/login.jpg','تسجيل دخول الموظفين')">
+          <img src="assets/login.jpg" alt="تسجيل دخول الموظفين">
+          <span>تسجيل الدخول</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="section" id="flow">
+    <div class="container">
+      <h2>التدفق التشغيلي داخل المطعم</h2>
+      
+
+      <div class="flow">
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div>
+              <b>الزبون يمسح QR ويختار الأصناف</b>
+              <span>منيو بتبويبات + صور + تحكم بالكمية داخل كل عنصر.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <div>
+              <b>السلة --> ملاحظة الطلب --> إرسال</b>
+              <span>تحكم كامل بالعناصر مع إجمالي واضح ثم إرسال الطلب.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <div>
+              <b>الطلب يصل للطاقم (لوحة الموظفين)</b>
+              <span>الطاقم يراجع التفاصيل ثم يضغط “إرسال للمطبخ”.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <div>
+              <b>المطبخ يستلم “فقط” ما أرسله الطاقم</b>
+              <span>لوحة المطبخ تعرض قيد التحضير ثم تم الإنجاز.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:18px">
+          <h3 style="margin-top:0">طلبات الخدمة (الأهم في مطاعم الشيشة)</h3>
+          <p class="muted">الزبون لا يحتاج ينادي بصوت عالي — كل شيء زر واحد.</p>
+
+          <div style="margin-top:12px;display:grid;gap:10px">
+            <div class="step" style="background:rgba(255,255,255,.04)">
+              <div class="n" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.22)">🛎️</div>
+              <div>
+                <b>استدعاء النادل</b>
+                <span>إشعار فوري يظهر في “نداءات الخدمة” مع رقم الطاولة ووقت الطلب.</span>
+              </div>
+            </div>
+
+            <div class="step" style="background:rgba(255,255,255,.04)">
+              <div class="n" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.22)">🔥</div>
+              <div>
+                <b>نارا (الشيشة)</b>
+                <span>طلب تجديد الفحم يظهر للطاقم كنداء مستقل.</span>
+              </div>
+            </div>
+
+            <div class="step" style="background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.16)">
+              <div class="n" style="background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.22)">💳</div>
+              <div>
+                <b>طلب الحساب</b>
+                <span>الطاقم يستلم إشعار تجهيز الفاتورة للطاولة بسرعة.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta" style="margin-top:14px">
+            <div>
+              <h3 style="margin:0 0 4px">جاهز نجهز نسخة Brand لمطعمك</h3>
+              <p style="margin:0">شعار المطعم + الألوان + QR لكل طاولة + حسابات للطاقم والمطبخ.</p>
+            </div>
+            <a class="btn btn-primary" href="#contact">ابدأ الآن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2>أسئلة شائعة</h2>
+      
+
+      <div class="faq">
+        <details>
+          <summary>هل يحتاج الزبون تحميل تطبيق؟</summary>
+          <p>لا، التجربة كاملة عبر المتصفح بعد مسح QR.</p>
+        </details>
+
+        <details>
+          <summary>ما الفرق بين لوحة الموظفين ولوحة المطبخ؟</summary>
+          <p>لوحة الموظفين تستقبل الطلبات من الطاولات وتقرر إرسالها للمطبخ. لوحة المطبخ تعرض فقط ما تم إرساله للمطبخ.</p>
+        </details>
+
+        <details>
+          <summary>هل طلبات الخدمة (نادل/نارا/حساب) منفصلة عن طلبات الطعام؟</summary>
+          <p>نعم، تظهر كـ “نداءات” في لوحة الموظفين لتتعامل معها بسرعة بدون خلطها مع طلبات المطبخ.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <!-- WHATSAPP CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2>تواصل معنا عبر واتساب</h2>
+    <p>اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.</p>
+
+    <div class="card" style="margin-top:18px;padding:18px;border-radius:24px">
+      <div style="display:grid;gap:12px;align-items:center">
+
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+          <div>
+            <div style="font-weight:900;font-size:18px">جاهز للديمو؟</div>
+            <div class="muted" style="font-size:13px">
+              سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
+            </div>
+          </div>
+
+          <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            فتح واتساب 💬
+          </a>
+        </div>
+
+        <div style="display:grid;gap:10px;margin-top:6px">
+          <div class="muted" style="font-size:13px;font-weight:800">رسالة جاهزة (سيتم إرسالها تلقائيًا):</div>
+          <div style="
+            padding:12px 14px;
+            border-radius:16px;
+            border:1px solid rgba(255,255,255,.14);
+            background:rgba(0,0,0,.18);
+            color:rgba(234,240,255,.82);
+            white-space:pre-wrap;
+            font-size:13px;">
+مرحبًا 👋
+أريد حجز ديمو لنظام Restaurant Order System
+
+- اسم المطعم: ___
+- المدينة: ___
+- عدد الطاولات: ___
+- ملاحظات: ___
+          </div>
+
+          <div class="muted" style="font-size:12px">
+            * عند الضغط على زر واتساب سيتم فتح المحادثة مع نفس الرسالة جاهزة للإرسال.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ضع رقم واتساب هنا بصيغة دولية بدون +
+  const WHATSAPP_NUMBER = "4915123456789"; // مثال: ألمانيا
+
+  const waMessage =
+`مرحبًا 👋
+أريد حجز ديمو لنظام Restaurant Order System
+
+- اسم المطعم: ___
+- المدينة: ___
+- عدد الطاولات: ___
+- ملاحظات: ___`;
+
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+  const waBtn = document.getElementById("waBtn");
+  waBtn.href = waUrl;
+</script>
+
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <div style="font-weight:900;color:var(--text)">Restaurant Order System</div>
+          <div>© <span id="year"></span> — جميع الحقوق محفوظة</div>
+        </div>
+
+        <div>
+          <div style="font-weight:900;color:var(--text);margin-bottom:6px">روابط</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#features">المميزات</a>
+            <a href="#screenshots">لقطات</a>
+            <a href="#flow">التدفق</a>
+            <a href="#contact">تواصل</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight:900;color:var(--text);margin-bottom:6px">جاهز للديمو؟</div>
+          <a class="btn btn-primary" href="#contact">احجز الآن</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="box" role="dialog" aria-modal="true">
+      <img id="lightboxImg" alt="Preview" src="">
+      <div class="bar">
+        <span id="lightboxTitle">Preview</span>
+        <button class="x" onclick="closeLightbox()">إغلاق ✕</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toast(msg){
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      el.style.opacity = "1";
+      clearTimeout(window.__t);
+      window.__t = setTimeout(() => {
+        el.style.opacity = "0";
+        setTimeout(()=> el.style.display = "none", 220);
+      }, 1800);
+    }
+
+    function submitLead(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      console.log("LEAD:", data);
+      toast("تم إرسال طلبك ✅ سنعاود التواصل قريبًا");
+      e.target.reset();
+      return false;
+    }
+
+    function copyTemplate(){
+      const text =
+`مرحبًا 👋
+أريد حجز ديمو لنظام Restaurant Order System
+
+- اسم المطعم: ___
+- المدينة: ___
+- عدد الطاولات: ___
+- هل يوجد شيشة؟ نعم/لا
+- هل تريد (طلبات خدمة): نادل + نارا + حساب؟ نعم/لا
+- هل تريد (لوحات): لوحة موظفين + لوحة مطبخ؟ نعم/لا
+- ملاحظات: ___`;
+      navigator.clipboard.writeText(text).then(()=>{
+        toast("تم نسخ رسالة واتساب ✅");
+      }).catch(()=>{
+        toast("تعذّر النسخ — انسخ يدويًا من الكونسول");
+        console.log(text);
+      });
+    }
+
+    function openLightbox(src, title){
+      const lb = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      const t = document.getElementById("lightboxTitle");
+      img.src = src;
+      t.textContent = title || "Preview";
+      lb.classList.add("open");
+    }
+
+    function closeLightbox(e){
+      if(!e || e.target.id === "lightbox"){
+        const lb = document.getElementById("lightbox");
+        lb.classList.remove("open");
+        document.getElementById("lightboxImg").src = "";
+      }
+    }
+
+    document.addEventListener("keydown", (ev)=>{
+      if(ev.key === "Escape") closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
