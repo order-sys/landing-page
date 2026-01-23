@@ -43,10 +43,6 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 
-    /* Utilities */
-    .muted{color:var(--muted)}
-    :focus-visible{outline:2px solid rgba(59,130,246,.75);outline-offset:3px}
-
     /* NAV */
     .nav{
       position: sticky; top:0; z-index:50;
@@ -454,7 +450,7 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">احجز ديمو مجاني</a>
             <a class="btn" href="#features">شوف المميزات</a>
-            <a class="btn btn-blue" href="#screens">واجهات النظام</a>
+            <a class="btn btn-blue" href="#screenshots">واجهات النظام</a>
           </div>
 
           <div class="stats">
@@ -473,35 +469,65 @@
           </div>
         </div>
 
-        <!-- HERO SHOWCASE -->
-        <div class="showcase" id="screens">
-          <div class="showcase-top">
-            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <div style="font-weight:900;color:var(--muted);font-size:13px">واجهات أساسية</div>
-          </div>
-          <div class="showcase-body">
-            <div class="shots-mini">
-              <button class="shot" onclick="openLightbox('assets/menu.jpg','واجهة المنيو')">
-                <img src="assets/menu.jpg" alt="واجهة المنيو" loading="lazy" decoding="async">
-                <span>منيو QR</span>
-              </button>
-              <button class="shot" onclick="openLightbox('assets/cart.jpg','السلة وملاحظة الطلب')">
-                <img src="assets/cart.jpg" alt="السلة" loading="lazy" decoding="async">
-                <span>السلة</span>
-              </button>
-              <button class="shot" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
-                <img src="assets/staff-orders.jpg" alt="لوحة الموظفين" loading="lazy" decoding="async">
-                <span>لوحة الموظفين</span>
-              </button>
-              <button class="shot" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
-                <img src="assets/kitchen.jpg" alt="لوحة المطبخ" loading="lazy" decoding="async">
-                <span>لوحة المطبخ</span>
-              </button>
-            </div>
+       <!-- HERO SHOWCASE (VIDEO) -->
+		<div class="showcase" id="screens">
+		  <div class="showcase-top">
+			<div class="dots">
+			  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+			</div>
+			<div style="font-weight:900;color:var(--muted);font-size:13px">
+			  عرض النظام (فيديو)
+			</div>
+		  </div>
 
-           
-          </div>
-        </div>
+		  <div class="showcase-body" style="padding:12px">
+			<div style="
+			  position:relative;
+			  border-radius:18px;
+			  overflow:hidden;
+			  border:1px solid rgba(255,255,255,.14);
+			  background:rgba(0,0,0,.35);
+			">
+			  <video
+				src="assets/demo.mp4"
+				autoplay
+				muted
+				loop
+				playsinline
+				controls
+				style="
+				  width:100%;
+				  height:auto;
+				  display:block;
+				  background:#000;
+				">
+				متصفحك لا يدعم تشغيل الفيديو
+			  </video>
+
+			  <!-- Optional overlay label -->
+			  <div style="
+				position:absolute;
+				left:12px;
+				bottom:12px;
+				padding:6px 10px;
+				border-radius:999px;
+				font-size:12px;
+				font-weight:900;
+				background:rgba(0,0,0,.55);
+				border:1px solid rgba(255,255,255,.16);
+				color:#fff;
+				backdrop-filter: blur(8px);
+			  ">
+				Customer → Staff → Kitchen
+			  </div>
+			</div>
+
+			<div class="muted" style="font-size:12px;margin-top:10px;text-align:center">
+			  فيديو يوضح المنيو، السلة، طلب الخدمة، لوحة الموظفين، ولوحة المطبخ
+			</div>
+		  </div>
+		</div>
+
 
       </div>
     </div>
@@ -567,7 +593,7 @@
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#contact">احجز ديمو</a>
-          <a class="btn btn-blue" href="#screenshots">شوف كل اللقطات</a>
+       
         </div>
       </div>
     </div>
@@ -581,47 +607,46 @@
 
       <div class="shots" style="margin-top:18px">
         <button class="shot big" onclick="openLightbox('assets/menu.jpg','واجهة المنيو (QR)')">
-          <img src="assets/menu.jpg" alt="واجهة المنيو" loading="lazy" decoding="async">
+          <img src="assets/menu.jpg" alt="واجهة المنيو">
           <span>منيو QR</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/cart.jpg','السلة + ملاحظة الطلب + إرسال')">
-          <img src="assets/cart.jpg" alt="السلة" loading="lazy" decoding="async">
+          <img src="assets/cart.jpg" alt="السلة">
           <span>السلة</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/order-confirm.jpg','تم إرسال الطلب بنجاح')">
-          <img src="assets/order-confirm.jpg" alt="تأكيد الطلب" loading="lazy" decoding="async">
+          <img src="assets/order-confirm.jpg" alt="تأكيد الطلب">
           <span>تأكيد الإرسال</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/send-service.jpg','طلب خدمة (نادل/نارا/حساب)')">
-          <img src="assets/send-service.jpg" alt="طلب خدمة" loading="lazy" decoding="async">
+          <img src="assets/send-service.jpg" alt="طلب خدمة">
           <span>طلب خدمة</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
-          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات" loading="lazy" decoding="async">
+          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات">
           <span>لوحة الموظفين</span>
         </button>
-
-        <button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - تفاصيل الطلب')">
-          <img src="assets/staff-order-details.jpg" alt="لوحة الموظفين - تفاصيل الطلب" loading="lazy" decoding="async">
+		<button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - الطلبات الجديدة')">
+          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
           <span>تفاصيل الطلب</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/staff-services.jpg','لوحة الموظفين - النداءات النشطة')">
-          <img src="assets/staff-services.jpg" alt="لوحة الموظفين - النداءات" loading="lazy" decoding="async">
+          <img src="assets/staff-services.jpg" alt="لوحة الموظفين - النداءات">
           <span>نداءات الخدمة</span>
         </button>
 
         <button class="shot big" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
-          <img src="assets/kitchen.jpg" alt="لوحة المطبخ" loading="lazy" decoding="async">
+          <img src="assets/kitchen.jpg" alt="لوحة المطبخ">
           <span>لوحة المطبخ</span>
         </button>
 
         <button class="shot" onclick="openLightbox('assets/login.jpg','تسجيل دخول الموظفين')">
-          <img src="assets/login.jpg" alt="تسجيل دخول الموظفين" loading="lazy" decoding="async">
+          <img src="assets/login.jpg" alt="تسجيل دخول الموظفين">
           <span>تسجيل الدخول</span>
         </button>
       </div>
@@ -752,12 +777,9 @@
             </div>
           </div>
 
-          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-            <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
-              فتح واتساب 💬
-            </a>
-            <button type="button" class="btn" onclick="copyTemplate()">نسخ الرسالة</button>
-          </div>
+          <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
+            فتح واتساب 💬
+          </a>
         </div>
 
         <div style="display:grid;gap:10px;margin-top:6px">
