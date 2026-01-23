@@ -402,6 +402,23 @@
       .form-grid{grid-template-columns:1fr}
       .cta{flex-direction:column;align-items:stretch}
     }
+	.logo{
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display:block;
+}
+
+
   </style>
 </head>
 
@@ -412,12 +429,15 @@
     <div class="container">
       <div class="nav-inner">
         <div class="brand">
-          <div class="badge">R</div>
-          <div>
-            <div class="t1">Restaurant Order System</div>
-            <div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
-          </div>
-        </div>
+		  <div class="logo">
+			<img src="assets/logo.JPEG" alt="Restaurant Order System Logo">
+		  </div>
+		  <div>
+			<div class="t1">Restaurant Order System</div>
+			<div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
+		  </div>
+		</div>
+
 
         <div class="nav-links">
           <a href="#features">المميزات</a>
@@ -630,8 +650,8 @@
           <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات">
           <span>لوحة الموظفين</span>
         </button>
-		<button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - الطلبات الجديدة')">
-          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
+		<button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - تفاصيل الطلب')">
+          <img src="assets/staff-order-details.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
           <span>تفاصيل الطلب</span>
         </button>
 
@@ -795,10 +815,10 @@
 مرحبًا 👋
 أريد حجز ديمو لنظام Restaurant Order System
 
-- اسم المطعم: ___
-- المدينة: ___
-- عدد الطاولات: ___
-- ملاحظات: ___
+- اسم المطعم: 
+- المدينة: 
+- عدد الطاولات: 
+- ملاحظات: 
           </div>
 
           <div class="muted" style="font-size:12px">
@@ -813,16 +833,16 @@
 
 <script>
   // ضع رقم واتساب هنا بصيغة دولية بدون +
-  const WHATSAPP_NUMBER = "4915123456789"; // مثال: ألمانيا
+  const WHATSAPP_NUMBER = "491775022755"; // مثال: ألمانيا
 
   const waMessage =
-`مرحبًا 👋
+`مرحبًا 
 أريد حجز ديمو لنظام Restaurant Order System
 
-- اسم المطعم: ___
-- المدينة: ___
-- عدد الطاولات: ___
-- ملاحظات: ___`;
+- اسم المطعم: 
+- المدينة: 
+- عدد الطاولات: 
+- ملاحظات: `;
 
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
   const waBtn = document.getElementById("waBtn");
