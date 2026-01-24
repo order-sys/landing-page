@@ -2,32 +2,39 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Restaurant Order System | نظام طلبات المطعم عبر QR</title>
   <meta name="description" content="نظام طلبات المطعم عبر QR: منيو رقمية، سلة وملاحظات، طلب خدمة (نادل/نارا/حساب)، لوحة الموظفين لإرسال الطلب للمطبخ، ولوحة مطبخ للطلبات قيد التحضير." />
 
   <style>
     :root{
       --bg:#070d18;
-      --panel: rgba(255,255,255,.05);
-      --panel2: rgba(255,255,255,.07);
-      --line: rgba(255,255,255,.10);
       --text:#eaf0ff;
-      --muted: rgba(234,240,255,.70);
+      --muted:rgba(234,240,255,.72);
 
-      /* نفس روح واجهاتكم */
-      --green: #22c55e;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.12);
+
+      --green:#22c55e;
       --green2:#16a34a;
-      --blue: #3b82f6;
-      --warn:#f59e0b;
+      --blue:#3b82f6;
+      --amber:#f59e0b;
 
-      --shadow: 0 22px 70px rgba(0,0,0,.50);
-      --r: 18px;
-      --r2: 24px;
-      --max: 1150px;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --shadow2: 0 12px 35px rgba(0,0,0,.22);
+
+      --r:18px;
+      --r2:24px;
+
+      --max:1150px;
+
+      --ease:cubic-bezier(.2,.7,.2,1);
+      --ring: 0 0 0 3px rgba(59,130,246,.22);
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Tahoma, Arial, "Noto Sans Arabic", sans-serif;
@@ -37,174 +44,184 @@
         radial-gradient(900px 520px at 90% 20%, rgba(59,130,246,.10), transparent 60%),
         radial-gradient(900px 520px at 60% 90%, rgba(245,158,11,.08), transparent 60%),
         var(--bg);
-      line-height:1.6;
+      line-height:1.65;
     }
 
+    img, video{max-width:100%}
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .muted{color:var(--muted)}
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
 
-    /* NAV */
-    /* NAV */
-.nav{
-  position: sticky; top:0; z-index:50;
-  background: rgba(7,13,24,.62);
-  backdrop-filter: blur(12px);
-  border-bottom:1px solid var(--line);
-}
+    /* ---------- NAV ---------- */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background: rgba(7,13,24,.60);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;padding:12px 0;
+      position:relative;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:42px;height:42px;border-radius:14px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      display:grid;place-items:center;
+    }
+    .logo img{width:120%;height:120%;object-fit:cover;transform:scale(1.08);display:block}
+    .brand-text .t1{font-weight:950;letter-spacing:.2px;line-height:1.1}
+    .brand-text .t2{color:var(--muted);font-size:12.5px;font-weight:800;margin-top:2px}
 
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  padding:12px 0;
-}
+    .nav-links{
+      display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+      padding:6px;border-radius: 16px;
+      border:1px solid transparent;
+    }
+    .nav-links a{
+      color:var(--muted);
+      padding:9px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      font-weight:900;font-size:14px;
+      transition: .18s var(--ease);
+      transition-property: background, border-color, color, transform;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+      transform: translateY(-1px);
+    }
 
-/* BRAND */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color: inherit;
-}
+    .nav-cta{display:flex;align-items:center;gap:10px}
+    .nav-toggle{
+      display:none;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius:12px;
+      padding:9px 12px;
+      font-weight:950;
+      cursor:pointer;
+      transition:.18s var(--ease);
+    }
+    .nav-toggle:hover{transform:translateY(-1px);background:rgba(255,255,255,.08)}
+    .nav-toggle:focus-visible{outline:none;box-shadow:var(--ring)}
 
-.brand-text .t1{font-weight:900; line-height:1.1}
-.brand-text .t2{
-  color:var(--muted);
-  font-size:12.5px;
-  font-weight:700;
-  line-height:1.2;
-  margin-top:2px;
-}
+    /* Mobile menu */
+    .menu{
+      display:none;
+      position:absolute;
+      top:66px;left:0;right:0;
+      margin:0 12px;
+      border:1px solid var(--line);
+      background: rgba(7,13,24,.92);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: var(--shadow2);
+    }
+    .menu.open{display:block}
+    .menu a{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid transparent;
+      color:var(--muted);
+      font-weight:950;
+    }
+    .menu a:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.10);color:var(--text)}
 
-/* LOGO */
-.logo{
-  width:40px;
-  height:40px;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  box-shadow: 0 16px 40px rgba(0,0,0,.22);
-  display:grid;
-  place-items:center;
-}
+    @media (max-width: 920px){
+      .brand-text .t2{display:none}
+      .nav-links{display:none}
+      .nav-toggle{display:inline-flex}
+    }
 
-.logo img{
-  width:120%;
-  height:120%;
-  object-fit:cover;
-  transform: scale(1.08);
-  display:block;
-}
+    /* ---------- Buttons ---------- */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:11px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight:950;
+      font-size:14px;
+      letter-spacing:.1px;
+      cursor:pointer;
+      transition:.18s var(--ease);
+      transition-property: transform, background, border-color, box-shadow, filter;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px);background: rgba(255,255,255,.08);border-color: rgba(255,255,255,.18)}
+    .btn:active{transform: translateY(0)}
+    .btn:focus-visible{outline:none;box-shadow:var(--ring)}
+    .btn-primary{
+      background: linear-gradient(180deg, rgba(34,197,94,.92), rgba(22,163,74,.88));
+      border-color: rgba(34,197,94,.35);
+      box-shadow: 0 18px 45px rgba(34,197,94,.18);
+    }
+    .btn-primary:hover{filter:brightness(1.03)}
+    .btn-blue{
+      background: linear-gradient(180deg, rgba(59,130,246,.92), rgba(37,99,235,.88));
+      border-color: rgba(59,130,246,.38);
+      box-shadow: 0 18px 45px rgba(59,130,246,.16);
+    }
 
-/* LINKS */
-.nav-links{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.nav-links a{
-  color:var(--muted);
-  padding:8px 10px;
-  border-radius:12px;
-  border:1px solid transparent;
-  text-decoration:none;
-  font-weight:800;
-  font-size:14px;
-  transition: .18s background, .18s border-color, .18s color, .18s transform;
-}
-
-.nav-links a:hover{
-  color:var(--text);
-  border-color: var(--line);
-  background: rgba(255,255,255,.04);
-  transform: translateY(-1px);
-}
-
-/* CTA */
-.nav-cta{display:flex;align-items:center;gap:10px}
-
-/* Mobile toggle button */
-.nav-toggle{
-  display:none;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: var(--text);
-  border-radius:12px;
-  padding:8px 12px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-/* Responsive */
-@media (max-width: 860px){
-  .brand-text .t2{display:none;} /* اختياري: نظافة على الموبايل */
-  .nav-toggle{display:inline-flex;}
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:64px;
-    left:0;
-    right:0;
-    padding:12px;
-    margin:0 12px;
-    border:1px solid var(--line);
-    background: rgba(7,13,24,.92);
-    backdrop-filter: blur(12px);
-    border-radius:16px;
-    gap:8px;
-  }
-  .nav-links.open{display:flex;}
-  .nav-links a{flex:1; text-align:center;}
-}
-
-
-    /* HERO */
-    .hero{padding:58px 0 24px}
+    /* ---------- HERO ---------- */
+    .hero{padding:56px 0 26px}
     .hero-grid{
       display:grid;
       grid-template-columns: 1.12fr .88fr;
-      gap:20px;
+      gap:18px;
       align-items:stretch;
     }
+
     .pill{
       display:inline-flex;align-items:center;gap:10px;
       padding:8px 12px;border-radius:999px;
       background: rgba(34,197,94,.10);
-      border: 1px solid rgba(34,197,94,.20);
-      color: var(--text);
-      font-weight:900;
+      border: 1px solid rgba(34,197,94,.22);
+      font-weight:950;
       margin-bottom:14px;
     }
+
     .hero h1{
       margin:0 0 10px;
       font-size: clamp(28px, 3.2vw, 46px);
-      line-height:1.15;
+      line-height:1.16;
       letter-spacing:.2px;
     }
     .hero p{margin:0 0 18px;color:var(--muted);font-size:16px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
-    .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .stats{
+      display:flex;gap:12px;flex-wrap:wrap;margin-top:18px
+    }
     .stat{
-      min-width:160px;
+      min-width: 168px;
       padding:12px 14px;
       border-radius:16px;
-      background: rgba(255,255,255,.05);
+      background: var(--card);
       border:1px solid var(--line);
+      box-shadow: var(--shadow2);
     }
-    .stat .num{font-weight:900;font-size:18px}
-    .stat .lbl{color:var(--muted);font-size:13px}
+    .stat .num{font-weight:950;font-size:15px}
+    .stat .lbl{color:var(--muted);font-size:13px;margin-top:2px}
 
-    /* RIGHT HERO SHOWCASE */
+    /* Showcase */
     .showcase{
       border-radius: var(--r2);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.04));
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
@@ -212,8 +229,8 @@
     }
     .showcase::before{
       content:"";
-      position:absolute; inset:-80px -70px auto auto;
-      width:240px;height:240px;border-radius:50%;
+      position:absolute; inset:-90px -70px auto auto;
+      width:260px;height:260px;border-radius:50%;
       background: radial-gradient(circle at 30% 30%, rgba(34,197,94,.25), transparent 62%);
       pointer-events:none;
       filter: blur(2px);
@@ -226,102 +243,62 @@
     }
     .dots{display:flex;gap:6px}
     .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
-    .showcase-body{padding:16px}
+    .showcase-body{padding:14px}
+    .video-frame{
+      position:relative;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
+      box-shadow: var(--shadow2);
+    }
+    .video-frame video{
+      width:100%;
+      height:auto;
+      display:block;
+      background:#000;
+    }
+    .badge{
+      position:absolute;
+      left:12px;bottom:12px;
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size:12px;
+      font-weight:950;
+      background: rgba(0,0,0,.52);
+      border: 1px solid rgba(255,255,255,.16);
+      color:#fff;
+      backdrop-filter: blur(10px);
+    }
 
-    /* SECTIONS */
+    /* ---------- Sections ---------- */
     .section{padding:44px 0}
     .section h2{margin:0 0 10px;font-size: clamp(22px, 2.2vw, 34px)}
     .section p{margin:0;color:var(--muted)}
+    .section-head{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
 
-    /* Cards */
+    /* Cards grid */
     .grid-3{display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;margin-top:18px}
     .card{
-      background: var(--panel);
+      background: var(--card);
       border:1px solid var(--line);
       border-radius: var(--r);
       padding:16px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.18);
-    }
-    .icon{
-      width:44px;height:44px;border-radius:16px;
-      display:grid;place-items:center;
-      background: rgba(34,197,94,.12);
-      border:1px solid rgba(34,197,94,.20);
-      font-weight:900;
-      margin-bottom:12px;
+      box-shadow: var(--shadow2);
     }
     .card h3{margin:0 0 6px}
     .card p{margin:0;color:var(--muted);font-size:14px}
 
-    /* Flow */
-    .flow{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:18px;
-      align-items:stretch;
-    }
-    .steps{display:grid;gap:12px}
-    .step{
-      display:flex;gap:12px;align-items:flex-start;
-      padding:14px;
-      border-radius: var(--r);
-      background: var(--panel2);
-      border:1px solid var(--line);
-    }
-    .step .n{
-      width:34px;height:34px;border-radius:12px;
+    .icon{
+      width:44px;height:44px;border-radius:16px;
       display:grid;place-items:center;
-      font-weight:900;
-      background: rgba(59,130,246,.12);
-      border:1px solid rgba(59,130,246,.22);
-    }
-    .step b{display:block;margin-bottom:2px}
-    .step span{color:var(--muted);font-size:14px}
-
-    /* Screenshots */
-    .shots, .shots-mini{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    .shots-mini{grid-template-columns: repeat(2, 1fr)}
-    .shot{
-      position:relative;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;
-      padding:0;
-      cursor:pointer;
-      box-shadow: 0 14px 40px rgba(0,0,0,.18);
-      transition:.18s transform, .18s filter, .18s border-color;
-      text-align:right;
-    }
-    .shot:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.22);
-      filter: brightness(1.03);
-    }
-    .shot img{
-      width:100%;
-      height: 175px;
-      object-fit: cover;
-      display:block;
-    }
-    .shot.big{ grid-column: span 2; }
-    .shot.big img{ height: 265px; }
-    .shot span{
-      position:absolute;
-      left:12px; top:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      background: rgba(0,0,0,.40);
-      border:1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
+      background: rgba(34,197,94,.12);
+      border:1px solid rgba(34,197,94,.22);
+      font-weight:950;
+      margin-bottom:12px;
     }
 
     /* CTA */
@@ -341,6 +318,81 @@
     .cta h3{margin:0 0 4px}
     .cta p{margin:0;color:var(--muted);font-size:14px}
 
+    /* Flow */
+    .flow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:18px;
+      align-items:stretch;
+    }
+    .steps{display:grid;gap:12px}
+    .step{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:14px;
+      border-radius: var(--r);
+      background: var(--card2);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow2);
+    }
+    .step .n{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      font-weight:950;
+      background: rgba(59,130,246,.12);
+      border:1px solid rgba(59,130,246,.22);
+      flex: 0 0 auto;
+    }
+    .step b{display:block;margin-bottom:2px}
+    .step span{color:var(--muted);font-size:14px}
+
+    /* Screens */
+    .shots{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .shot{
+      position:relative;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      overflow:hidden;
+      padding:0;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+      transition:.18s var(--ease);
+      transition-property: transform, filter, border-color;
+      text-align:right;
+    }
+    .shot:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.22);
+      filter: brightness(1.03);
+    }
+    .shot:focus-visible{outline:none;box-shadow:var(--ring)}
+    .shot img{
+      width:100%;
+      height: 175px;
+      object-fit: cover;
+      display:block;
+    }
+    .shot.big{ grid-column: span 2; }
+    .shot.big img{ height: 265px; }
+    .shot span{
+      position:absolute;
+      left:12px; top:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      background: rgba(0,0,0,.44);
+      border:1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+    }
+
     /* FAQ */
     .faq{margin-top:18px;display:grid;gap:10px}
     details{
@@ -348,36 +400,23 @@
       border:1px solid var(--line);
       border-radius: var(--r);
       padding:12px 14px;
+      box-shadow: var(--shadow2);
     }
-    summary{cursor:pointer;font-weight:900}
-    details p{margin:8px 0 0;color:var(--muted);font-size:14px}
-
-    /* Contact form */
-    .form{
-      margin-top:18px;
-      background: var(--panel);
-      border:1px solid var(--line);
-      border-radius: var(--r2);
-      padding:16px;
-      box-shadow: var(--shadow);
+    summary{
+      cursor:pointer;
+      font-weight:950;
+      list-style:none;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
     }
-    .form-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
+    summary::-webkit-details-marker{display:none}
+    summary::after{
+      content:"⌄";
+      opacity:.8;
+      transform: translateY(-1px);
+      transition: .18s var(--ease);
     }
-    label .lbl{color:var(--muted);font-size:13px;margin-bottom:6px}
-    input, textarea{
-      width:100%;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      color:var(--text);
-      outline:none;
-    }
-    textarea{resize:vertical}
-    .form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    details[open] summary::after{transform: rotate(180deg)}
+    details p{margin:10px 0 0;color:var(--muted);font-size:14px}
 
     /* Footer */
     footer{
@@ -419,7 +458,7 @@
       width:min(1000px, 96vw);
       border-radius: 18px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(7,13,24,.70);
+      background: rgba(7,13,24,.72);
       box-shadow: 0 20px 90px rgba(0,0,0,.6);
       overflow:hidden;
     }
@@ -435,75 +474,75 @@
       padding:10px 12px;
       border-top:1px solid rgba(255,255,255,.10);
       color: rgba(255,255,255,.85);
-      font-weight:900;
+      font-weight:950;
     }
     .lightbox .x{
       border:none; cursor:pointer;
-      padding:8px 10px; border-radius:12px;
+      padding:9px 10px; border-radius:12px;
       background: rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.14);
       color: rgba(255,255,255,.92);
     }
+    .lightbox .x:focus-visible{outline:none;box-shadow:var(--ring)}
 
     /* Responsive */
     @media (max-width: 980px){
-      .nav-links{display:none}
       .hero-grid{grid-template-columns:1fr}
       .grid-3{grid-template-columns:1fr}
       .flow{grid-template-columns:1fr}
       .shots{grid-template-columns:1fr}
-      .shots-mini{grid-template-columns:1fr}
       .shot.big{grid-column:auto}
       .shot img{height:210px}
       .shot.big img{height:230px}
-      .form-grid{grid-template-columns:1fr}
       .cta{flex-direction:column;align-items:stretch}
     }
-	
-
-
   </style>
 </head>
 
-<body>
+<body id="top">
 
   <!-- NAV -->
-  
-	<div class="nav">
-	  <div class="container">
-		<div class="nav-inner">
-		  
-		  <a class="brand" href="#top" aria-label="Home">
-			<div class="logo">
-			  <img src="assets/logo.jpeg" alt="Restaurant Order System Logo">
-			</div>
-			<div class="brand-text">
-			  <div class="t1">Syrianorder</div>
-			  <div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
-			</div>
-		  </a>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
 
-		  <button class="nav-toggle" type="button" aria-label="Open menu"
-			onclick="document.querySelector('.nav-links').classList.toggle('open')">
-			☰
-		  </button>
+        <a class="brand" href="#top" aria-label="Home">
+          <div class="logo">
+            <img src="assets/logo.jpeg" alt="Restaurant Order System Logo">
+          </div>
+          <div class="brand-text">
+            <div class="t1">Syrianorder</div>
+            <div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
+          </div>
+        </a>
 
-		  <div class="nav-links">
-			<a href="#features">المميزات</a>
-			<a href="#screens">لقطات</a>
-			<a href="#flow">التدفق</a>
-			<a href="#faq">FAQ</a>
-			<a href="#contact">تواصل</a>
-		  </div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#features">المميزات</a>
+          <a href="#screenshots">لقطات</a>
+          <a href="#flow">التدفق</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">تواصل</a>
+        </nav>
 
-		  <div class="nav-cta">
-			<a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
-		  </div>
+        <div class="nav-cta">
+          <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
+          <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu">
+            ☰ <span class="sr-only">فتح القائمة</span>
+          </button>
+        </div>
 
-		</div>
-	  </div>
-	</div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="menu" role="menu" aria-label="Mobile">
+          <a role="menuitem" href="#features">المميزات</a>
+          <a role="menuitem" href="#screenshots">لقطات</a>
+          <a role="menuitem" href="#flow">التدفق</a>
+          <a role="menuitem" href="#faq">FAQ</a>
+          <a role="menuitem" href="#contact">تواصل</a>
+        </div>
 
+      </div>
+    </div>
+  </div>
 
   <!-- HERO -->
   <header class="hero">
@@ -515,7 +554,10 @@
 
           <h1>نظام QR Ordering منظم: الزبون يطلب… الطاقم يراجع… والمطبخ يطبخ.</h1>
 
-     
+          <p>
+            تجربة بدون تطبيق للزبون، ولوحتين واضحتين للطاقم والمطبخ.
+            كل شيء مصمم لتقليل الأخطاء، وتسريع الخدمة، وتحسين تجربة العملاء.
+          </p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
@@ -529,7 +571,7 @@
               <div class="lbl">تدفق منظم قبل دخول المطبخ</div>
             </div>
             <div class="stat">
-              <div class="num">طلب خدمة</div>
+              <div class="num">طلبات خدمة</div>
               <div class="lbl">نادل + نارا + حساب</div>
             </div>
             <div class="stat">
@@ -539,65 +581,29 @@
           </div>
         </div>
 
-       <!-- HERO SHOWCASE (VIDEO) -->
-		<div class="showcase" id="screens">
-		  <div class="showcase-top">
-			<div class="dots">
-			  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-			</div>
-			<div style="font-weight:900;color:var(--muted);font-size:13px">
-			  عرض النظام (فيديو)
-			</div>
-		  </div>
+        <!-- SHOWCASE -->
+        <div class="showcase" id="screens">
+          <div class="showcase-top">
+            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="muted" style="font-weight:950;font-size:13px">عرض النظام (فيديو)</div>
+          </div>
 
-		  <div class="showcase-body" style="padding:12px">
-			<div style="
-			  position:relative;
-			  border-radius:18px;
-			  overflow:hidden;
-			  border:1px solid rgba(255,255,255,.14);
-			  background:rgba(0,0,0,.35);
-			">
-			  <video
-				src="assets/demo.mp4"
-				autoplay
-				muted
-				loop
-				playsinline
-				controls
-				style="
-				  width:100%;
-				  height:auto;
-				  display:block;
-				  background:#000;
-				">
-				متصفحك لا يدعم تشغيل الفيديو
-			  </video>
+          <div class="showcase-body">
+            <div class="video-frame">
+              <video
+                src="assets/demo.mp4"
+                autoplay muted loop playsinline controls
+              >
+                متصفحك لا يدعم تشغيل الفيديو
+              </video>
+              <div class="badge">Customer → Staff → Kitchen</div>
+            </div>
 
-			  <!-- Optional overlay label -->
-			  <div style="
-				position:absolute;
-				left:12px;
-				bottom:12px;
-				padding:6px 10px;
-				border-radius:999px;
-				font-size:12px;
-				font-weight:900;
-				background:rgba(0,0,0,.55);
-				border:1px solid rgba(255,255,255,.16);
-				color:#fff;
-				backdrop-filter: blur(8px);
-			  ">
-				Customer → Staff → Kitchen
-			  </div>
-			</div>
-
-			<div class="muted" style="font-size:12px;margin-top:10px;text-align:center">
-			  فيديو يوضح المنيو، السلة، طلب الخدمة، لوحة الموظفين، ولوحة المطبخ
-			</div>
-		  </div>
-		</div>
-
+            <div class="muted" style="font-size:12px;margin-top:10px;text-align:center">
+              فيديو يوضح المنيو، السلة، طلب الخدمة، لوحة الموظفين، ولوحة المطبخ
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -606,129 +612,131 @@
   <!-- FEATURES -->
   <section class="section" id="features">
     <div class="container">
-      <h2>المميزات</h2>
-      <p>بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.</p>
+      <div class="section-head">
+        <div>
+          <h2>المميزات</h2>
+          <p>بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.</p>
+        </div>
+      </div>
 
       <div class="grid-3">
         <div class="card">
           <div class="icon">QR</div>
           <h3>منيو QR مع بحث وتبويبات</h3>
-          <p>واجهة منظمة للأصناف (Meals/Drinks/Desserts…) + صور + أسعار + تحكم بالكمية.</p>
+          <p>واجهة منظمة للأصناف + صور + أسعار + تحكم بالكمية.</p>
         </div>
 
         <div class="card">
           <div class="icon">🧺</div>
           <h3>سلة احترافية + ملاحظة الطلب</h3>
-          <p>تعديل الكميات، حذف عناصر، وإضافة ملاحظة (مثال: بدون بصل…)، ثم إرسال الطلب.</p>
+          <p>تعديل الكميات، حذف عناصر، وإضافة ملاحظة، ثم إرسال الطلب.</p>
         </div>
 
         <div class="card">
           <div class="icon">✅</div>
           <h3>تأكيد إرسال الطلب</h3>
-          <p>بعد الإرسال: شاشة نجاح + معلومات الطلب + اختصارات (عودة للمنيو / خدمة / سلة).</p>
+          <p>شاشة نجاح + معلومات الطلب + اختصارات ذكية للتنقل.</p>
         </div>
 
         <div class="card">
           <div class="icon">🛎️</div>
           <h3>طلبات خدمة من الطاولة</h3>
-          <p>
-            شاشة “طلب خدمة” بثلاثة أزرار واضحة:
-            <b>استدعاء النادل</b> / <b>نارا (الشيشة)</b> / <b>الحساب</b>.
-          </p>
+          <p>أزرار واضحة: <b>نادل</b> / <b>نارا</b> / <b>الحساب</b> — بإشعار فوري للطاقم.</p>
         </div>
 
         <div class="card">
           <div class="icon">👥</div>
           <h3>لوحة الموظفين (Staff Board)</h3>
-          <p>
-            تظهر فيها <b>الطلبات الجديدة</b> مع رقم الطاولة والإجمالي والوقت،
-            وأزرار: <b>تفاصيل</b> / <b>إرسال للمطبخ</b> / <b>إلغاء</b>.
-          </p>
+          <p>طلبات جديدة مع الوقت والإجمالي وأزرار: تفاصيل / إرسال للمطبخ / إلغاء.</p>
         </div>
 
         <div class="card">
           <div class="icon">🍳</div>
           <h3>لوحة المطبخ (Kitchen Board)</h3>
-          <p>
-            تعرض فقط الطلبات التي <b>أرسلها الطاقم للمطبخ</b>،
-            مع حالة <b>قيد التحضير</b> وزر <b>تم الإنجاز</b>.
-          </p>
+          <p>تعرض فقط الطلبات المعتمدة من الطاقم، مع حالة “قيد التحضير” ثم “تم الإنجاز”.</p>
         </div>
       </div>
 
       <div class="cta">
         <div>
           <h3>ميزة قوية: فصل الطلبات عن المطبخ حتى يعتمدها الطاقم</h3>
-          <p>هذا يقلل الأخطاء، ويمنع وصول الطلبات الناقصة للمطبخ، ويجعل الخدمة أكثر انسيابية.</p>
+          <p>تقل الأخطاء، وتزيد الانسيابية، وتتحسن تجربة الزبون بشكل واضح.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
-       
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SCREENSHOTS (FULL) -->
+  <!-- SCREENSHOTS -->
   <section class="section" id="screenshots">
     <div class="container">
-      <h2>واجهات النظام</h2>
-     
+      <div class="section-head">
+        <div>
+          <h2>واجهات النظام</h2>
+          <p>لقطات فعلية من تجربة الزبون والطاقم والمطبخ.</p>
+        </div>
+      </div>
 
-      <div class="shots" style="margin-top:18px">
-        <button class="shot big" onclick="openLightbox('assets/menu.jpg','واجهة المنيو (QR)')">
+      <div class="shots">
+        <button class="shot big" type="button" onclick="openLightbox('assets/menu.jpg','واجهة المنيو (QR)')">
           <img src="assets/menu.jpg" alt="واجهة المنيو">
           <span>منيو QR</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/cart.jpg','السلة + ملاحظة الطلب + إرسال')">
+        <button class="shot" type="button" onclick="openLightbox('assets/cart.jpg','السلة + ملاحظة الطلب + إرسال')">
           <img src="assets/cart.jpg" alt="السلة">
           <span>السلة</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/order-confirm.jpg','تم إرسال الطلب بنجاح')">
+        <button class="shot" type="button" onclick="openLightbox('assets/order-confirm.jpg','تم إرسال الطلب بنجاح')">
           <img src="assets/order-confirm.jpg" alt="تأكيد الطلب">
           <span>تأكيد الإرسال</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/send-service.jpg','طلب خدمة (نادل/نارا/حساب)')">
+        <button class="shot" type="button" onclick="openLightbox('assets/send-service.jpg','طلب خدمة (نادل/نارا/حساب)')">
           <img src="assets/send-service.jpg" alt="طلب خدمة">
           <span>طلب خدمة</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
           <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات">
           <span>لوحة الموظفين</span>
         </button>
-		<button class="shot" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - تفاصيل الطلب')">
+
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - تفاصيل الطلب')">
           <img src="assets/staff-order-details.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
           <span>تفاصيل الطلب</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/staff-services.jpg','لوحة الموظفين - النداءات النشطة')">
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-services.jpg','لوحة الموظفين - النداءات النشطة')">
           <img src="assets/staff-services.jpg" alt="لوحة الموظفين - النداءات">
           <span>نداءات الخدمة</span>
         </button>
 
-        <button class="shot big" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
+        <button class="shot big" type="button" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
           <img src="assets/kitchen.jpg" alt="لوحة المطبخ">
           <span>لوحة المطبخ</span>
         </button>
 
-        <button class="shot" onclick="openLightbox('assets/login.jpg','تسجيل دخول الموظفين')">
+        <button class="shot" type="button" onclick="openLightbox('assets/login.jpg','تسجيل دخول الموظفين')">
           <img src="assets/login.jpg" alt="تسجيل دخول الموظفين">
           <span>تسجيل الدخول</span>
         </button>
       </div>
-
     </div>
   </section>
 
   <!-- FLOW -->
   <section class="section" id="flow">
     <div class="container">
-      <h2>التدفق التشغيلي داخل المطعم</h2>
-      
+      <div class="section-head">
+        <div>
+          <h2>التدفق التشغيلي داخل المطعم</h2>
+          <p>من أول مسح QR حتى تسليم الطلب — بخطوات واضحة.</p>
+        </div>
+      </div>
 
       <div class="flow">
         <div class="steps">
@@ -742,7 +750,7 @@
           <div class="step">
             <div class="n">2</div>
             <div>
-              <b>السلة --> ملاحظة الطلب --> إرسال</b>
+              <b>السلة → ملاحظة الطلب → إرسال</b>
               <span>تحكم كامل بالعناصر مع إجمالي واضح ثم إرسال الطلب.</span>
             </div>
           </div>
@@ -756,7 +764,7 @@
           <div class="step">
             <div class="n">4</div>
             <div>
-              <b>المطبخ يستلم “فقط” ما أرسله الطاقم</b>
+              <b>المطبخ يستلم فقط ما أرسله الطاقم</b>
               <span>لوحة المطبخ تعرض قيد التحضير ثم تم الإنجاز.</span>
             </div>
           </div>
@@ -768,7 +776,7 @@
 
           <div style="margin-top:12px;display:grid;gap:10px">
             <div class="step" style="background:rgba(255,255,255,.04)">
-              <div class="n" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.22)">🛎️</div>
+              <div class="n">🛎️</div>
               <div>
                 <b>استدعاء النادل</b>
                 <span>إشعار فوري يظهر في “نداءات الخدمة” مع رقم الطاولة ووقت الطلب.</span>
@@ -807,58 +815,34 @@
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container">
-      <h2>أسئلة شائعة</h2>
-      
+      <div class="section-head">
+        <div>
+          <h2>أسئلة شائعة</h2>
+          <p>أكثر الأسئلة المتكررة قبل طلب الديمو.</p>
+        </div>
+      </div>
 
       <div class="faq">
-	  <details open>
-		  <summary>ما فائدة النظام لصاحب المطعم؟ ولماذا أحتاجه فعلًا؟</summary>
-		  <p>
-			هذا النظام ليس مجرد منيو QR، بل أداة تشغيل متكاملة تساعدك على:
-			<br><br>
-			
-			<b>📵 وداعًا للمنيو الورقي:</b>
-			توقف عن الطباعة المتكررة والتكاليف الإضافية،
-			وحدّث الأسعار والأصناف فورًا من لوحة التحكم
-			بدون أي خسائر أو إرباك للزبائن.
-			<br><br>
-			
-			<b>👥 تقليل الضغط على الطاقم وخفض التكاليف:</b>
-			الزبائن يطلبون بأنفسهم عبر QR ويستخدمون أزرار
-			“استدعاء النادل / نارا / الحساب”،
-			مما يقلل الحركة العشوائية داخل الصالة
-			ويسمح بتقليل عدد الطاقم التشغيلي
-			بما يصل إلى <b>40%</b> دون التأثير على جودة الخدمة.
-			<br><br>
-
-
-			<b>📈 زيادة المبيعات:</b>
-			الزبون يرى المنيو كاملًا مع الصور والأسعار، ويطلب بهدوء بدون استعجال،
-			مما يزيد متوسط قيمة الطلب ويقلل التردد.
-			<br><br>
-
-			<<b>⏱️ تسريع الخدمة وتقليل الفوضى:</b>
-			الطلبات تنتقل بشكل منظم بين الطاولة، لوحة الموظفين، والمطبخ،
-			بدون أوراق، بدون صراخ، وبدون أخطاء في نقل الطلبات.
-			<br><br>
-
-
-			<b>❌ تقليل الأخطاء والخسائر:</b>
-			المطبخ لا يستلم أي طلب إلا بعد اعتماد الموظف،
-			مما يمنع الطلبات الخاطئة أو الناقصة.
-			<br><br>
-
-
-			<b>🔥 مثالي لمطاعم تقدم الشيشة:</b>
-			طلب “نارا” يصل مباشرة للطاقم بدون تأخير،
-			مما يرفع رضا الزبائن ويزيد مدة جلوسهم.
-			<br><br>
-
-			<b>💡 صورة احترافية للمطعم:</b>
-			تجربة عصرية تعطي انطباع مطعم منظم وحديث،
-			بدون الحاجة لتطبيق أو أجهزة إضافية.
-		  </p>
-		</details>
+        <details open>
+          <summary>ما فائدة النظام لصاحب المطعم؟ ولماذا أحتاجه فعلًا؟</summary>
+          <p>
+            هذا النظام ليس مجرد منيو QR، بل أداة تشغيل متكاملة تساعدك على:
+            <br><br>
+            <b>📵 وداعًا للمنيو الورقي:</b> تحديث الأسعار والأصناف فورًا بدون طباعة متكررة.
+            <br><br>
+            <b>👥 تقليل الضغط على الطاقم:</b> الزبون يطلب بنفسه + أزرار خدمة واضحة، مما يقلل الحركة العشوائية.
+            <br><br>
+            <b>📈 زيادة المبيعات:</b> عرض منيو كامل بصور وأسعار يرفع متوسط الطلب.
+            <br><br>
+            <b>⏱️ تسريع الخدمة وتقليل الفوضى:</b> تدفق منظم بين الطاولة والطاقم والمطبخ.
+            <br><br>
+            <b>❌ تقليل الأخطاء والخسائر:</b> المطبخ لا يستلم أي طلب إلا بعد اعتماد الموظف.
+            <br><br>
+            <b>🔥 مثالي لمطاعم الشيشة:</b> طلب “نارا” يصل فورًا للطاقم.
+            <br><br>
+            <b>💡 صورة احترافية:</b> تجربة عصرية بدون تطبيق أو أجهزة إضافية.
+          </p>
+        </details>
 
         <details>
           <summary>هل يحتاج الزبون تحميل تطبيق؟</summary>
@@ -879,86 +863,68 @@
   </section>
 
   <!-- CONTACT -->
-  <!-- WHATSAPP CONTACT -->
-<section class="section" id="contact">
-  <div class="container">
-    <h2>تواصل معنا عبر واتساب</h2>
-    <p>اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.</p>
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>تواصل معنا عبر واتساب</h2>
+          <p>اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.</p>
+        </div>
+      </div>
 
-    <div class="card" style="margin-top:18px;padding:18px;border-radius:24px">
-      <div style="display:grid;gap:12px;align-items:center">
-
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
-          <div>
-            <div style="font-weight:900;font-size:18px">جاهز للديمو؟</div>
-            <div class="muted" style="font-size:13px">
-              سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
+      <div class="card" style="border-radius:24px;padding:18px">
+        <div style="display:grid;gap:12px">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+            <div>
+              <div style="font-weight:950;font-size:18px">جاهز للديمو؟</div>
+              <div class="muted" style="font-size:13px">
+                سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
+              </div>
             </div>
+
+            <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
+              فتح واتساب 💬
+            </a>
           </div>
 
-          <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
-            فتح واتساب 💬
-          </a>
-        </div>
-
-        <div style="display:grid;gap:10px;margin-top:6px">
-          <div class="muted" style="font-size:13px;font-weight:800">رسالة جاهزة (سيتم إرسالها تلقائيًا):</div>
-          <div style="
-            padding:12px 14px;
-            border-radius:16px;
-            border:1px solid rgba(255,255,255,.14);
-            background:rgba(0,0,0,.18);
-            color:rgba(234,240,255,.82);
-            white-space:pre-wrap;
-            font-size:13px;">
+          <div style="display:grid;gap:10px;margin-top:6px">
+            <div class="muted" style="font-size:13px;font-weight:900">رسالة جاهزة (سيتم إرسالها تلقائيًا):</div>
+            <div style="
+              padding:12px 14px;
+              border-radius:16px;
+              border:1px solid rgba(255,255,255,.14);
+              background:rgba(0,0,0,.18);
+              color:rgba(234,240,255,.86);
+              white-space:pre-wrap;
+              font-size:13px;">
 مرحبًا 👋
 أريد حجز ديمو لنظام Restaurant Order System
 
-- اسم المطعم: 
-- المدينة: 
-- عدد الطاولات: 
-- ملاحظات: 
-          </div>
+- اسم المطعم:
+- المدينة:
+- عدد الطاولات:
+- ملاحظات:
+            </div>
 
-          <div class="muted" style="font-size:12px">
-            * عند الضغط على زر واتساب سيتم فتح المحادثة مع نفس الرسالة جاهزة للإرسال.
+            <div class="muted" style="font-size:12px">
+              * عند الضغط على زر واتساب سيتم فتح المحادثة مع نفس الرسالة جاهزة للإرسال.
+            </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</section>
-
-<script>
-  // ضع رقم واتساب هنا بصيغة دولية بدون +
-  const WHATSAPP_NUMBER = "491775022755"; // مثال: ألمانيا
-
-  const waMessage =
-`مرحبًا 
-أريد حجز ديمو لنظام Restaurant Order System
-
-- اسم المطعم: 
-- المدينة: 
-- عدد الطاولات: 
-- ملاحظات: `;
-
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
-  const waBtn = document.getElementById("waBtn");
-  waBtn.href = waUrl;
-</script>
-
+  </section>
 
   <footer>
     <div class="container">
       <div class="foot">
         <div>
-          <div style="font-weight:900;color:var(--text)">Restaurant Order System</div>
+          <div style="font-weight:950;color:var(--text)">Syrianorder</div>
           <div>© <span id="year"></span> — جميع الحقوق محفوظة</div>
         </div>
 
         <div>
-          <div style="font-weight:900;color:var(--text);margin-bottom:6px">روابط</div>
+          <div style="font-weight:950;color:var(--text);margin-bottom:6px">روابط</div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="#features">المميزات</a>
             <a href="#screenshots">لقطات</a>
@@ -968,7 +934,7 @@
         </div>
 
         <div>
-          <div style="font-weight:900;color:var(--text);margin-bottom:6px">جاهز للتجريب؟</div>
+          <div style="font-weight:950;color:var(--text);margin-bottom:6px">جاهز للتجريب؟</div>
           <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
         </div>
       </div>
@@ -980,18 +946,59 @@
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <div class="box" role="dialog" aria-modal="true">
+    <div class="box" role="dialog" aria-modal="true" aria-label="Image preview">
       <img id="lightboxImg" alt="Preview" src="">
       <div class="bar">
         <span id="lightboxTitle">Preview</span>
-        <button class="x" onclick="closeLightbox()">إغلاق ✕</button>
+        <button class="x" type="button" onclick="closeLightbox()">إغلاق ✕</button>
       </div>
     </div>
   </div>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // WhatsApp
+    const WHATSAPP_NUMBER = "491775022755"; // بدون +
+    const waMessage =
+`مرحبًا 👋
+أريد حجز ديمو لنظام Restaurant Order System
+
+- اسم المطعم:
+- المدينة:
+- عدد الطاولات:
+- ملاحظات:`;
+    document.getElementById("waBtn").href =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+
+    // Mobile menu (better UX + aria)
+    const toggleBtn = document.getElementById("navToggle");
+    const menu = document.getElementById("mobileMenu");
+
+    function setMenu(open){
+      menu.classList.toggle("open", open);
+      toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    toggleBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setMenu(!menu.classList.contains("open"));
+    });
+
+    // close on link click
+    menu?.querySelectorAll("a").forEach(a=>{
+      a.addEventListener("click", ()=> setMenu(false));
+    });
+
+    // close on outside click
+    document.addEventListener("click", (e)=>{
+      if(!menu.classList.contains("open")) return;
+      const clickedInside = menu.contains(e.target) || toggleBtn.contains(e.target);
+      if(!clickedInside) setMenu(false);
+    });
+
+    // Toast
     function toast(msg){
       const el = document.getElementById("toast");
       el.textContent = msg;
@@ -1004,41 +1011,11 @@
       }, 1800);
     }
 
-    function submitLead(e){
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      console.log("LEAD:", data);
-      toast("تم إرسال طلبك ✅ سنعاود التواصل قريبًا");
-      e.target.reset();
-      return false;
-    }
-
-    function copyTemplate(){
-      const text =
-`مرحبًا 👋
-أريد حجز ديمو لنظام Restaurant Order System
-
-- اسم المطعم: ___
-- المدينة: ___
-- عدد الطاولات: ___
-- هل يوجد شيشة؟ نعم/لا
-- هل تريد (طلبات خدمة): نادل + نارا + حساب؟ نعم/لا
-- هل تريد (لوحات): لوحة موظفين + لوحة مطبخ؟ نعم/لا
-- ملاحظات: ___`;
-      navigator.clipboard.writeText(text).then(()=>{
-        toast("تم نسخ رسالة واتساب ✅");
-      }).catch(()=>{
-        toast("تعذّر النسخ — انسخ يدويًا من الكونسول");
-        console.log(text);
-      });
-    }
-
+    // Lightbox
     function openLightbox(src, title){
       const lb = document.getElementById("lightbox");
-      const img = document.getElementById("lightboxImg");
-      const t = document.getElementById("lightboxTitle");
-      img.src = src;
-      t.textContent = title || "Preview";
+      document.getElementById("lightboxImg").src = src;
+      document.getElementById("lightboxTitle").textContent = title || "Preview";
       lb.classList.add("open");
     }
 
@@ -1054,6 +1031,6 @@
       if(ev.key === "Escape") closeLightbox();
     });
   </script>
-
 </body>
 </html>
+
