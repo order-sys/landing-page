@@ -873,45 +873,65 @@
       </div>
 
       <div class="card" style="border-radius:24px;padding:18px">
-        <div style="display:grid;gap:12px">
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
-            <div>
-              <div style="font-weight:950;font-size:18px">جاهز للديمو؟</div>
-              <div class="muted" style="font-size:13px">
-                سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
-              </div>
-            </div>
+	  <div style="display:grid;gap:12px">
 
-            <a id="waBtn" class="btn btn-primary" href="#" target="_blank" rel="noopener">
-              فتح واتساب 💬
-            </a>
-          </div>
+		<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+		  <div>
+			<div style="font-weight:950;font-size:18px">جاهز للديمو؟</div>
+			<div class="muted" style="font-size:13px">
+			  سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
+			</div>
+		  </div>
 
-          <div style="display:grid;gap:10px;margin-top:6px">
-            <div class="muted" style="font-size:13px;font-weight:900">رسالة جاهزة (سيتم إرسالها تلقائيًا):</div>
-            <div style="
-              padding:12px 14px;
-              border-radius:16px;
-              border:1px solid rgba(255,255,255,.14);
-              background:rgba(0,0,0,.18);
-              color:rgba(234,240,255,.86);
-              white-space:pre-wrap;
-              font-size:13px;">
-مرحبًا 👋
-أريد حجز ديمو لنظام Restaurant Order System
+		  <!-- Instagram CTA -->
+		  <a
+			id="igBtn"
+			class="btn btn-primary"
+			href="https://www.instagram.com/syrianorder/"
+			target="_blank"
+			rel="noopener"
+		  >
+			مراسلتنا على إنستغرام 📩
+		  </a>
+		</div>
 
-- اسم المطعم:
-- المدينة:
-- عدد الطاولات:
-- ملاحظات:
-            </div>
+		<div style="display:grid;gap:10px;margin-top:6px">
+		  <div class="muted" style="font-size:13px;font-weight:900">
+			رسالة مقترحة (انسخها وأرسلها لنا):
+		  </div>
 
-            <div class="muted" style="font-size:12px">
-              * عند الضغط على زر واتساب سيتم فتح المحادثة مع نفس الرسالة جاهزة للإرسال.
-            </div>
-          </div>
-        </div>
-      </div>
+		  <div
+			id="igMessage"
+			style="
+			  padding:12px 14px;
+			  border-radius:16px;
+			  border:1px solid rgba(255,255,255,.14);
+			  background:rgba(0,0,0,.18);
+			  color:rgba(234,240,255,.86);
+			  white-space:pre-wrap;
+			  font-size:13px;
+			">
+	مرحبًا 👋  
+	أريد حجز ديمو لنظام syrianorder
+
+	- اسم المطعم:
+	- المدينة:
+	- عدد الطاولات:
+	- ملاحظات:
+		  </div>
+
+		  <div style="display:flex;gap:10px;flex-wrap:wrap">
+			<button class="btn" onclick="copyInstagramMessage()">نسخ الرسالة</button>
+		  </div>
+
+		  <div class="muted" style="font-size:12px">
+			* سيتم فتح حساب إنستغرام، فقط الصق الرسالة داخل المحادثة.
+		  </div>
+		</div>
+
+  </div>
+</div>
+
     </div>
   </section>
 
@@ -956,6 +976,14 @@
   </div>
 
   <script>
+  function copyInstagramMessage(){
+    const text = document.getElementById("igMessage").innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      alert("تم نسخ الرسالة ✅");
+    }).catch(() => {
+      alert("تعذر النسخ، انسخ الرسالة يدويًا.");
+    });
+  }
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -963,7 +991,7 @@
     const WHATSAPP_NUMBER = "491775022755"; // بدون +
     const waMessage =
 `مرحبًا 👋
-أريد حجز ديمو لنظام Restaurant Order System
+أريد حجز ديمو لنظام syrianorder
 
 - اسم المطعم:
 - المدينة:
