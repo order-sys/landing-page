@@ -522,6 +522,10 @@
           <a href="#flow" data-i18n="nav.flow">التدفق</a>
           <a href="#faq" data-i18n="nav.faq">FAQ</a>
           <a href="#contact" data-i18n="nav.contact">تواصل</a>
+		  <div class="menu-lang" role="group" aria-label="Language">
+			<button class="btn" type="button" data-set-lang="ar">AR</button>
+			<button class="btn" type="button" data-set-lang="en">EN</button>
+		  </div>
         </nav>
 
  
@@ -1469,6 +1473,7 @@ document.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-set-lang]");
   if (!btn) return;
   setLang(btn.getAttribute("data-set-lang"));
+  setMenu(false);
 });
 
 /* =========================
