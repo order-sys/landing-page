@@ -499,7 +499,7 @@
   </style>
 </head>
 
-<body id="top">
+<body id="top" dir="rtl" lang="ar" data-lang="ar">
 
   <!-- NAV -->
   <div class="nav">
@@ -511,33 +511,42 @@
             <img src="assets/logo.jpeg" alt="Restaurant Order System Logo">
           </div>
           <div class="brand-text">
-            <div class="t1">Syrianorder</div>
-            <div class="t2">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
+            <div class="t1" data-i18n="brand.name">Syrianorder</div>
+            <div class="t2" data-i18n="brand.tagline">طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة</div>
           </div>
         </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="#features">المميزات</a>
-          <a href="#screenshots">لقطات</a>
-          <a href="#flow">التدفق</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">تواصل</a>
+          <a href="#features" data-i18n="nav.features">المميزات</a>
+          <a href="#screenshots" data-i18n="nav.screenshots">لقطات</a>
+          <a href="#flow" data-i18n="nav.flow">التدفق</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="#contact" data-i18n="nav.contact">تواصل</a>
         </nav>
 
+ 
+
+
         <div class="nav-cta">
-          <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
+          <a class="btn btn-primary" href="#contact" data-i18n="nav.cta">احجز تجربة مجانية</a>
           <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu">
-            ☰ <span class="sr-only">فتح القائمة</span>
+            ☰ <span class="sr-only" data-i18n="nav.openMenu">فتح القائمة</span>
           </button>
         </div>
 
         <!-- Mobile menu -->
         <div id="mobileMenu" class="menu" role="menu" aria-label="Mobile">
-          <a role="menuitem" href="#features">المميزات</a>
-          <a role="menuitem" href="#screenshots">لقطات</a>
-          <a role="menuitem" href="#flow">التدفق</a>
-          <a role="menuitem" href="#faq">FAQ</a>
-          <a role="menuitem" href="#contact">تواصل</a>
+          <a role="menuitem" href="#features" data-i18n="nav.features">المميزات</a>
+          <a role="menuitem" href="#screenshots" data-i18n="nav.screenshots">لقطات</a>
+          <a role="menuitem" href="#flow" data-i18n="nav.flow">التدفق</a>
+          <a role="menuitem" href="#faq" data-i18n="nav.faq">FAQ</a>
+          <a role="menuitem" href="#contact" data-i18n="nav.contact">تواصل</a>
+		  <div class="menu-divider" aria-hidden="true"></div>
+
+		  <div class="menu-lang" role="group" aria-label="Language">
+			<button class="btn" type="button" data-set-lang="ar">AR</button>
+			<button class="btn" type="button" data-set-lang="en">EN</button>
+		  </div>
         </div>
 
       </div>
@@ -550,33 +559,33 @@
       <div class="hero-grid">
 
         <div>
-          <div class="pill">⚡ من الطاولة للمطبخ خلال ثواني — بدون فوضى</div>
+          <div class="pill" data-i18n="hero.pill">⚡ من الطاولة للمطبخ خلال ثواني — بدون فوضى</div>
 
-          <h1>نظام QR Ordering منظم: الزبون يطلب… الطاقم يراجع… والمطبخ يطبخ.</h1>
+          <h1 data-i18n="hero.h1">نظام QR Ordering منظم: الزبون يطلب… الطاقم يراجع… والمطبخ يطبخ.</h1>
 
-          <p>
+          <p data-i18n="hero.p" style="white-space:pre-wrap;">
             تجربة بدون تطبيق للزبون، ولوحتين واضحتين للطاقم والمطبخ.
             كل شيء مصمم لتقليل الأخطاء، وتسريع الخدمة، وتحسين تجربة العملاء.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
-            <a class="btn" href="#features">شوف المميزات</a>
-            <a class="btn btn-blue" href="#screenshots">واجهات النظام</a>
+            <a class="btn btn-primary" href="#contact" data-i18n="hero.ctaPrimary">احجز تجربة مجانية</a>
+            <a class="btn" href="#features" data-i18n="hero.ctaFeatures">شوف المميزات</a>
+            <a class="btn btn-blue" href="#screenshots" data-i18n="hero.ctaScreens">واجهات النظام</a>
           </div>
 
           <div class="stats">
             <div class="stat">
-              <div class="num">Staff → Kitchen</div>
-              <div class="lbl">تدفق منظم قبل دخول المطبخ</div>
+              <div class="num" data-i18n="hero.stat1.num">Staff → Kitchen</div>
+              <div class="lbl" data-i18n="hero.stat1.lbl">تدفق منظم قبل دخول المطبخ</div>
             </div>
             <div class="stat">
-              <div class="num">طلبات خدمة</div>
-              <div class="lbl">نادل + نارا + حساب</div>
+              <div class="num" data-i18n="hero.stat2.num">طلبات خدمة</div>
+              <div class="lbl" data-i18n="hero.stat2.lbl">نادل + نارا + حساب</div>
             </div>
             <div class="stat">
-              <div class="num">بدون تطبيق</div>
-              <div class="lbl">للزبون: متصفح فقط</div>
+              <div class="num" data-i18n="hero.stat3.num">بدون تطبيق</div>
+              <div class="lbl" data-i18n="hero.stat3.lbl">للزبون: متصفح فقط</div>
             </div>
           </div>
         </div>
@@ -585,7 +594,7 @@
         <div class="showcase" id="screens">
           <div class="showcase-top">
             <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <div class="muted" style="font-weight:950;font-size:13px">عرض النظام (فيديو)</div>
+            <div class="muted" style="font-weight:950;font-size:13px" data-i18n="hero.videoTitle">عرض النظام (فيديو)</div>
           </div>
 
           <div class="showcase-body">
@@ -594,12 +603,12 @@
                 src="assets/demo.mp4"
                 autoplay muted loop playsinline controls
               >
-                متصفحك لا يدعم تشغيل الفيديو
+                <span data-i18n="hero.videoFallback">متصفحك لا يدعم تشغيل الفيديو</span>
               </video>
-              <div class="badge">Customer → Staff → Kitchen</div>
+              <div class="badge" data-i18n="hero.videoBadge">Customer → Staff → Kitchen</div>
             </div>
 
-            <div class="muted" style="font-size:12px;margin-top:10px;text-align:center">
+            <div class="muted" style="font-size:12px;margin-top:10px;text-align:center" data-i18n="hero.videoDesc">
               فيديو يوضح المنيو، السلة، طلب الخدمة، لوحة الموظفين، ولوحة المطبخ
             </div>
           </div>
@@ -614,56 +623,60 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>المميزات</h2>
-          <p>بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.</p>
+          <h2 data-i18n="features.h2">المميزات</h2>
+          <p data-i18n="features.p">بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.</p>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="card">
           <div class="icon">QR</div>
-          <h3>منيو QR مع بحث وتبويبات</h3>
-          <p>واجهة منظمة للأصناف + صور + أسعار + تحكم بالكمية.</p>
+          <h3 data-i18n="features.c1.h3">منيو QR مع بحث وتبويبات</h3>
+          <p data-i18n="features.c1.p">واجهة منظمة للأصناف + صور + أسعار + تحكم بالكمية.</p>
         </div>
 
         <div class="card">
           <div class="icon">🧺</div>
-          <h3>سلة احترافية + ملاحظة الطلب</h3>
-          <p>تعديل الكميات، حذف عناصر، وإضافة ملاحظة، ثم إرسال الطلب.</p>
+          <h3 data-i18n="features.c2.h3">سلة احترافية + ملاحظة الطلب</h3>
+          <p data-i18n="features.c2.p">تعديل الكميات، حذف عناصر، وإضافة ملاحظة، ثم إرسال الطلب.</p>
         </div>
 
         <div class="card">
           <div class="icon">✅</div>
-          <h3>تأكيد إرسال الطلب</h3>
-          <p>شاشة نجاح + معلومات الطلب + اختصارات ذكية للتنقل.</p>
+          <h3 data-i18n="features.c3.h3">تأكيد إرسال الطلب</h3>
+          <p data-i18n="features.c3.p">شاشة نجاح + معلومات الطلب + اختصارات ذكية للتنقل.</p>
         </div>
 
         <div class="card">
           <div class="icon">🛎️</div>
-          <h3>طلبات خدمة من الطاولة</h3>
-          <p>أزرار واضحة: <b>نادل</b> / <b>نارا</b> / <b>الحساب</b> — بإشعار فوري للطاقم.</p>
+          <h3 data-i18n="features.c4.h3">طلبات خدمة من الطاولة</h3>
+          <p data-i18n="features.c4.p">
+            أزرار واضحة: <b data-i18n="features.c4.waiter">نادل</b> /
+            <b data-i18n="features.c4.coal">نارا</b> /
+            <b data-i18n="features.c4.bill">الحساب</b> — بإشعار فوري للطاقم.
+          </p>
         </div>
 
         <div class="card">
           <div class="icon">👥</div>
-          <h3>لوحة الموظفين (Staff Board)</h3>
-          <p>طلبات جديدة مع الوقت والإجمالي وأزرار: تفاصيل / إرسال للمطبخ / إلغاء.</p>
+          <h3 data-i18n="features.c5.h3">لوحة الموظفين (Staff Board)</h3>
+          <p data-i18n="features.c5.p">طلبات جديدة مع الوقت والإجمالي وأزرار: تفاصيل / إرسال للمطبخ / إلغاء.</p>
         </div>
 
         <div class="card">
           <div class="icon">🍳</div>
-          <h3>لوحة المطبخ (Kitchen Board)</h3>
-          <p>تعرض فقط الطلبات المعتمدة من الطاقم، مع حالة “قيد التحضير” ثم “تم الإنجاز”.</p>
+          <h3 data-i18n="features.c6.h3">لوحة المطبخ (Kitchen Board)</h3>
+          <p data-i18n="features.c6.p">تعرض فقط الطلبات المعتمدة من الطاقم، مع حالة “قيد التحضير” ثم “تم الإنجاز”.</p>
         </div>
       </div>
 
       <div class="cta">
         <div>
-          <h3>ميزة قوية: فصل الطلبات عن المطبخ حتى يعتمدها الطاقم</h3>
-          <p>تقل الأخطاء، وتزيد الانسيابية، وتتحسن تجربة الزبون بشكل واضح.</p>
+          <h3 data-i18n="features.cta.h3">ميزة قوية: فصل الطلبات عن المطبخ حتى يعتمدها الطاقم</h3>
+          <p data-i18n="features.cta.p">تقل الأخطاء، وتزيد الانسيابية، وتتحسن تجربة الزبون بشكل واضح.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
+          <a class="btn btn-primary" href="#contact" data-i18n="features.cta.btn">احجز تجربة مجانية</a>
         </div>
       </div>
     </div>
@@ -674,55 +687,55 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>واجهات النظام</h2>
-          <p>لقطات فعلية من تجربة الزبون والطاقم والمطبخ.</p>
+          <h2 data-i18n="shots.h2">واجهات النظام</h2>
+          <p data-i18n="shots.p">لقطات فعلية من تجربة الزبون والطاقم والمطبخ.</p>
         </div>
       </div>
 
       <div class="shots">
-        <button class="shot big" type="button" onclick="openLightbox('assets/menu.jpg','واجهة المنيو (QR)')">
-          <img src="assets/menu.jpg" alt="واجهة المنيو">
-          <span>منيو QR</span>
+        <button class="shot big" type="button" onclick="openLightbox('assets/menu.jpg','lightbox.menu')">
+          <img src="assets/menu.jpg" alt="Menu">
+          <span data-i18n="shots.menu">منيو QR</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/cart.jpg','السلة + ملاحظة الطلب + إرسال')">
-          <img src="assets/cart.jpg" alt="السلة">
-          <span>السلة</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/cart.jpg','lightbox.cart')">
+          <img src="assets/cart.jpg" alt="Cart">
+          <span data-i18n="shots.cart">السلة</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/order-confirm.jpg','تم إرسال الطلب بنجاح')">
-          <img src="assets/order-confirm.jpg" alt="تأكيد الطلب">
-          <span>تأكيد الإرسال</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/order-confirm.jpg','lightbox.confirm')">
+          <img src="assets/order-confirm.jpg" alt="Order confirmation">
+          <span data-i18n="shots.confirm">تأكيد الإرسال</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/send-service.jpg','طلب خدمة (نادل/نارا/حساب)')">
-          <img src="assets/send-service.jpg" alt="طلب خدمة">
-          <span>طلب خدمة</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/send-service.jpg','lightbox.service')">
+          <img src="assets/send-service.jpg" alt="Service request">
+          <span data-i18n="shots.service">طلب خدمة</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/staff-orders.jpg','لوحة الموظفين - الطلبات الجديدة')">
-          <img src="assets/staff-orders.jpg" alt="لوحة الموظفين - الطلبات">
-          <span>لوحة الموظفين</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-orders.jpg','lightbox.staffOrders')">
+          <img src="assets/staff-orders.jpg" alt="Staff board">
+          <span data-i18n="shots.staffBoard">لوحة الموظفين</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/staff-order-details.jpg','لوحة الموظفين - تفاصيل الطلب')">
-          <img src="assets/staff-order-details.jpg" alt="لوحة الموظفين - تفاصيل الطلب">
-          <span>تفاصيل الطلب</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-order-details.jpg','lightbox.staffOrderDetails')">
+          <img src="assets/staff-order-details.jpg" alt="Order details">
+          <span data-i18n="shots.orderDetails">تفاصيل الطلب</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/staff-services.jpg','لوحة الموظفين - النداءات النشطة')">
-          <img src="assets/staff-services.jpg" alt="لوحة الموظفين - النداءات">
-          <span>نداءات الخدمة</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/staff-services.jpg','lightbox.staffServices')">
+          <img src="assets/staff-services.jpg" alt="Service calls">
+          <span data-i18n="shots.calls">نداءات الخدمة</span>
         </button>
 
-        <button class="shot big" type="button" onclick="openLightbox('assets/kitchen.jpg','لوحة المطبخ - قيد التحضير')">
-          <img src="assets/kitchen.jpg" alt="لوحة المطبخ">
-          <span>لوحة المطبخ</span>
+        <button class="shot big" type="button" onclick="openLightbox('assets/kitchen.jpg','lightbox.kitchen')">
+          <img src="assets/kitchen.jpg" alt="Kitchen board">
+          <span data-i18n="shots.kitchenBoard">لوحة المطبخ</span>
         </button>
 
-        <button class="shot" type="button" onclick="openLightbox('assets/login.jpg','تسجيل دخول الموظفين')">
-          <img src="assets/login.jpg" alt="تسجيل دخول الموظفين">
-          <span>تسجيل الدخول</span>
+        <button class="shot" type="button" onclick="openLightbox('assets/login.jpg','lightbox.login')">
+          <img src="assets/login.jpg" alt="Login">
+          <span data-i18n="shots.login">تسجيل الدخول</span>
         </button>
       </div>
     </div>
@@ -733,8 +746,8 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>التدفق التشغيلي داخل المطعم</h2>
-          <p>من أول مسح QR حتى تسليم الطلب — بخطوات واضحة.</p>
+          <h2 data-i18n="flow.h2">التدفق التشغيلي داخل المطعم</h2>
+          <p data-i18n="flow.p">من أول مسح QR حتى تسليم الطلب — بخطوات واضحة.</p>
         </div>
       </div>
 
@@ -743,69 +756,69 @@
           <div class="step">
             <div class="n">1</div>
             <div>
-              <b>الزبون يمسح QR ويختار الأصناف</b>
-              <span>منيو بتبويبات + صور + تحكم بالكمية داخل كل عنصر.</span>
+              <b data-i18n="flow.s1.b">الزبون يمسح QR ويختار الأصناف</b>
+              <span data-i18n="flow.s1.span">منيو بتبويبات + صور + تحكم بالكمية داخل كل عنصر.</span>
             </div>
           </div>
           <div class="step">
             <div class="n">2</div>
             <div>
-              <b>السلة → ملاحظة الطلب → إرسال</b>
-              <span>تحكم كامل بالعناصر مع إجمالي واضح ثم إرسال الطلب.</span>
+              <b data-i18n="flow.s2.b">السلة → ملاحظة الطلب → إرسال</b>
+              <span data-i18n="flow.s2.span">تحكم كامل بالعناصر مع إجمالي واضح ثم إرسال الطلب.</span>
             </div>
           </div>
           <div class="step">
             <div class="n">3</div>
             <div>
-              <b>الطلب يصل للطاقم (لوحة الموظفين)</b>
-              <span>الطاقم يراجع التفاصيل ثم يضغط “إرسال للمطبخ”.</span>
+              <b data-i18n="flow.s3.b">الطلب يصل للطاقم (لوحة الموظفين)</b>
+              <span data-i18n="flow.s3.span">الطاقم يراجع التفاصيل ثم يضغط “إرسال للمطبخ”.</span>
             </div>
           </div>
           <div class="step">
             <div class="n">4</div>
             <div>
-              <b>المطبخ يستلم فقط ما أرسله الطاقم</b>
-              <span>لوحة المطبخ تعرض قيد التحضير ثم تم الإنجاز.</span>
+              <b data-i18n="flow.s4.b">المطبخ يستلم فقط ما أرسله الطاقم</b>
+              <span data-i18n="flow.s4.span">لوحة المطبخ تعرض قيد التحضير ثم تم الإنجاز.</span>
             </div>
           </div>
         </div>
 
         <div class="card" style="padding:18px">
-          <h3 style="margin-top:0">طلبات الخدمة (الأهم في مطاعم الشيشة)</h3>
-          <p class="muted">الزبون لا يحتاج ينادي بصوت عالي — كل شيء زر واحد.</p>
+          <h3 style="margin-top:0" data-i18n="flow.calls.h3">طلبات الخدمة (الأهم في مطاعم الشيشة)</h3>
+          <p class="muted" data-i18n="flow.calls.p">الزبون لا يحتاج ينادي بصوت عالي — كل شيء زر واحد.</p>
 
           <div style="margin-top:12px;display:grid;gap:10px">
             <div class="step" style="background:rgba(255,255,255,.04)">
               <div class="n">🛎️</div>
               <div>
-                <b>استدعاء النادل</b>
-                <span>إشعار فوري يظهر في “نداءات الخدمة” مع رقم الطاولة ووقت الطلب.</span>
+                <b data-i18n="flow.calls.waiter.b">استدعاء النادل</b>
+                <span data-i18n="flow.calls.waiter.span">إشعار فوري يظهر في “نداءات الخدمة” مع رقم الطاولة ووقت الطلب.</span>
               </div>
             </div>
 
             <div class="step" style="background:rgba(255,255,255,.04)">
               <div class="n" style="background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.22)">🔥</div>
               <div>
-                <b>نارا (الشيشة)</b>
-                <span>طلب تجديد الفحم يظهر للطاقم كنداء مستقل.</span>
+                <b data-i18n="flow.calls.coal.b">نارا (الشيشة)</b>
+                <span data-i18n="flow.calls.coal.span">طلب تجديد الفحم يظهر للطاقم كنداء مستقل.</span>
               </div>
             </div>
 
             <div class="step" style="background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.16)">
               <div class="n" style="background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.22)">💳</div>
               <div>
-                <b>طلب الحساب</b>
-                <span>الطاقم يستلم إشعار تجهيز الفاتورة للطاولة بسرعة.</span>
+                <b data-i18n="flow.calls.bill.b">طلب الحساب</b>
+                <span data-i18n="flow.calls.bill.span">الطاقم يستلم إشعار تجهيز الفاتورة للطاولة بسرعة.</span>
               </div>
             </div>
           </div>
 
           <div class="cta" style="margin-top:14px">
             <div>
-              <h3 style="margin:0 0 4px">جاهز نجهز نسخة Brand لمطعمك</h3>
-              <p style="margin:0">شعار المطعم + الألوان + QR لكل طاولة + حسابات للطاقم والمطبخ.</p>
+              <h3 style="margin:0 0 4px" data-i18n="flow.brandReady.h3">جاهز نجهز نسخة Brand لمطعمك</h3>
+              <p style="margin:0" data-i18n="flow.brandReady.p">شعار المطعم + الألوان + QR لكل طاولة + حسابات للطاقم والمطبخ.</p>
             </div>
-            <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
+            <a class="btn btn-primary" href="#contact" data-i18n="flow.brandReady.btn">احجز تجربة مجانية</a>
           </div>
         </div>
       </div>
@@ -817,46 +830,32 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>أسئلة شائعة</h2>
-          <p>أكثر الأسئلة المتكررة قبل طلب الديمو.</p>
+          <h2 data-i18n="faq.h2">أسئلة شائعة</h2>
+          <p data-i18n="faq.p">أكثر الأسئلة المتكررة قبل طلب الديمو.</p>
         </div>
       </div>
 
       <div class="faq">
         <details open>
-          <summary>ما فائدة النظام لصاحب المطعم؟ ولماذا أحتاجه فعلًا؟</summary>
-          <p>
+          <summary data-i18n="faq.q1">ما فائدة النظام لصاحب المطعم؟ ولماذا أحتاجه فعلًا؟</summary>
+          <p data-i18n="faq.a1" style="white-space:pre-wrap;">
             هذا النظام ليس مجرد منيو QR، بل أداة تشغيل متكاملة تساعدك على:
-            <br><br>
-            <b>📵 وداعًا للمنيو الورقي:</b> تحديث الأسعار والأصناف فورًا بدون طباعة متكررة.
-            <br><br>
-            <b>👥 تقليل الضغط على الطاقم:</b> الزبون يطلب بنفسه + أزرار خدمة واضحة، مما يقلل الحركة العشوائية.
-            <br><br>
-            <b>📈 زيادة المبيعات:</b> عرض منيو كامل بصور وأسعار يرفع متوسط الطلب.
-            <br><br>
-            <b>⏱️ تسريع الخدمة وتقليل الفوضى:</b> تدفق منظم بين الطاولة والطاقم والمطبخ.
-            <br><br>
-            <b>❌ تقليل الأخطاء والخسائر:</b> المطبخ لا يستلم أي طلب إلا بعد اعتماد الموظف.
-            <br><br>
-            <b>🔥 مثالي لمطاعم الشيشة:</b> طلب “نارا” يصل فورًا للطاقم.
-            <br><br>
-            <b>💡 صورة احترافية:</b> تجربة عصرية بدون تطبيق أو أجهزة إضافية.
           </p>
         </details>
 
         <details>
-          <summary>هل يحتاج الزبون تحميل تطبيق؟</summary>
-          <p>لا، التجربة كاملة عبر المتصفح بعد مسح QR.</p>
+          <summary data-i18n="faq.q2">هل يحتاج الزبون تحميل تطبيق؟</summary>
+          <p data-i18n="faq.a2">لا، التجربة كاملة عبر المتصفح بعد مسح QR.</p>
         </details>
 
         <details>
-          <summary>ما الفرق بين لوحة الموظفين ولوحة المطبخ؟</summary>
-          <p>لوحة الموظفين تستقبل الطلبات من الطاولات وتقرر إرسالها للمطبخ. لوحة المطبخ تعرض فقط ما تم إرساله للمطبخ.</p>
+          <summary data-i18n="faq.q3">ما الفرق بين لوحة الموظفين ولوحة المطبخ؟</summary>
+          <p data-i18n="faq.a3">لوحة الموظفين تستقبل الطلبات من الطاولات وتقرر إرسالها للمطبخ. لوحة المطبخ تعرض فقط ما تم إرساله للمطبخ.</p>
         </details>
 
         <details>
-          <summary>هل طلبات الخدمة (نادل/نارا/حساب) منفصلة عن طلبات الطعام؟</summary>
-          <p>نعم، تظهر كـ “نداءات” في لوحة الموظفين لتتعامل معها بسرعة بدون خلطها مع طلبات المطبخ.</p>
+          <summary data-i18n="faq.q4">هل طلبات الخدمة (نادل/نارا/حساب) منفصلة عن طلبات الطعام؟</summary>
+          <p data-i18n="faq.a4">نعم، تظهر كـ “نداءات” في لوحة الموظفين لتتعامل معها بسرعة بدون خلطها مع طلبات المطبخ.</p>
         </details>
       </div>
     </div>
@@ -867,70 +866,70 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>تواصل معنا عبر واتساب</h2>
-          <p>اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.</p>
+          <h2 data-i18n="contact.h2">تواصل معنا عبر واتساب</h2>
+          <p data-i18n="contact.p">اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.</p>
         </div>
       </div>
 
       <div class="card" style="border-radius:24px;padding:18px">
-	  <div style="display:grid;gap:12px">
+        <div style="display:grid;gap:12px">
 
-		<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
-		  <div>
-			<div style="font-weight:950;font-size:18px">جاهز للديمو؟</div>
-			<div class="muted" style="font-size:13px">
-			  سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
-			</div>
-		  </div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+            <div>
+              <div style="font-weight:950;font-size:18px" data-i18n="contact.readyTitle">جاهز للديمو؟</div>
+              <div class="muted" style="font-size:13px" data-i18n="contact.readyDesc">
+                سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)
+              </div>
+            </div>
 
-		  <!-- Instagram CTA -->
-		  <a
-			id="igBtn"
-			class="btn btn-primary"
-			href="https://www.instagram.com/syrianorder/"
-			target="_blank"
-			rel="noopener"
-		  >
-			مراسلتنا على إنستغرام 📩
-		  </a>
-		</div>
+            <!-- Instagram CTA -->
+            <a
+              id="igBtn"
+              class="btn btn-primary"
+              href="https://www.instagram.com/syrianorder/"
+              target="_blank"
+              rel="noopener"
+              data-i18n="contact.igBtn"
+            >
+              مراسلتنا على إنستغرام 📩
+            </a>
+          </div>
 
-		<div style="display:grid;gap:10px;margin-top:6px">
-		  <div class="muted" style="font-size:13px;font-weight:900">
-			رسالة مقترحة (انسخها وأرسلها لنا):
-		  </div>
+          <div style="display:grid;gap:10px;margin-top:6px">
+            <div class="muted" style="font-size:13px;font-weight:900" data-i18n="contact.suggestedMsgTitle">
+              رسالة مقترحة (انسخها وأرسلها لنا):
+            </div>
 
-		  <div
-			id="igMessage"
-			style="
-			  padding:12px 14px;
-			  border-radius:16px;
-			  border:1px solid rgba(255,255,255,.14);
-			  background:rgba(0,0,0,.18);
-			  color:rgba(234,240,255,.86);
-			  white-space:pre-wrap;
-			  font-size:13px;
-			">
-	مرحبًا 👋  
-	أريد حجز ديمو لنظام syrianorder
+            <div
+              id="igMessage"
+              style="
+                padding:12px 14px;
+                border-radius:16px;
+                border:1px solid rgba(255,255,255,.14);
+                background:rgba(0,0,0,.18);
+                color:rgba(234,240,255,.86);
+                white-space:pre-wrap;
+                font-size:13px;
+              "
+            >مرحبًا 👋
+أريد حجز ديمو لنظام syrianorder
 
-	- اسم المطعم:
-	- المدينة:
-	- عدد الطاولات:
-	- ملاحظات:
-		  </div>
+- اسم المطعم:
+- المدينة:
+- عدد الطاولات:
+- ملاحظات:</div>
 
-		  <div style="display:flex;gap:10px;flex-wrap:wrap">
-			<button class="btn" onclick="copyInstagramMessage()">نسخ الرسالة</button>
-		  </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" type="button" onclick="copyInstagramMessage()" data-i18n="contact.copyBtn">نسخ الرسالة</button>
+            </div>
 
-		  <div class="muted" style="font-size:12px">
-			* سيتم فتح حساب إنستغرام، فقط الصق الرسالة داخل المحادثة.
-		  </div>
-		</div>
+            <div class="muted" style="font-size:12px" data-i18n="contact.note">
+              * سيتم فتح حساب إنستغرام، فقط الصق الرسالة داخل المحادثة.
+            </div>
+          </div>
 
-  </div>
-</div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -939,23 +938,24 @@
     <div class="container">
       <div class="foot">
         <div>
-          <div style="font-weight:950;color:var(--text)">Syrianorder</div>
-          <div>© <span id="year"></span> — جميع الحقوق محفوظة</div>
+          <div style="font-weight:950;color:var(--text)" data-i18n="brand.name">Syrianorder</div>
+          <div id="footerRights" data-i18n="footer.rights"></div>
+
         </div>
 
         <div>
-          <div style="font-weight:950;color:var(--text);margin-bottom:6px">روابط</div>
+          <div style="font-weight:950;color:var(--text);margin-bottom:6px" data-i18n="footer.links">روابط</div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#features">المميزات</a>
-            <a href="#screenshots">لقطات</a>
-            <a href="#flow">التدفق</a>
-            <a href="#contact">تواصل</a>
+            <a href="#features" data-i18n="nav.features">المميزات</a>
+            <a href="#screenshots" data-i18n="nav.screenshots">لقطات</a>
+            <a href="#flow" data-i18n="nav.flow">التدفق</a>
+            <a href="#contact" data-i18n="nav.contact">تواصل</a>
           </div>
         </div>
 
         <div>
-          <div style="font-weight:950;color:var(--text);margin-bottom:6px">جاهز للتجريب؟</div>
-          <a class="btn btn-primary" href="#contact">احجز تجربة مجانية</a>
+          <div style="font-weight:950;color:var(--text);margin-bottom:6px" data-i18n="footer.try">جاهز للتجريب؟</div>
+          <a class="btn btn-primary" href="#contact" data-i18n="footer.cta">احجز تجربة مجانية</a>
         </div>
       </div>
     </div>
@@ -969,95 +969,520 @@
     <div class="box" role="dialog" aria-modal="true" aria-label="Image preview">
       <img id="lightboxImg" alt="Preview" src="">
       <div class="bar">
-        <span id="lightboxTitle">Preview</span>
-        <button class="x" type="button" onclick="closeLightbox()">إغلاق ✕</button>
+        <span id="lightboxTitle" data-i18n="lightbox.preview">Preview</span>
+        <button class="x" type="button" onclick="closeLightbox()" data-i18n="lightbox.close">إغلاق ✕</button>
       </div>
     </div>
   </div>
 
   <script>
-  function copyInstagramMessage(){
-    const text = document.getElementById("igMessage").innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      alert("تم نسخ الرسالة ✅");
-    }).catch(() => {
-      alert("تعذر النسخ، انسخ الرسالة يدويًا.");
-    });
-  }
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // =========================
+    // i18n dictionary (AR/EN)
+    // =========================
+    const I18N = {
+      ar: {
+        "brand.name": "Syrianorder",
+        "brand.tagline": "طلب عبر QR + لوحة طاقم + لوحة مطبخ + طلبات خدمة",
 
-    // WhatsApp
-    const WHATSAPP_NUMBER = "491775022755"; // بدون +
-    const waMessage =
-`مرحبًا 👋
-أريد حجز ديمو لنظام syrianorder
+        "nav.features": "المميزات",
+        "nav.screenshots": "لقطات",
+        "nav.flow": "التدفق",
+        "nav.faq": "FAQ",
+        "nav.contact": "تواصل",
+        "nav.cta": "احجز تجربة مجانية",
+        "nav.openMenu": "فتح القائمة",
 
-- اسم المطعم:
-- المدينة:
-- عدد الطاولات:
-- ملاحظات:`;
-    document.getElementById("waBtn").href =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+        "hero.pill": "⚡ من الطاولة للمطبخ خلال ثواني — بدون فوضى",
+        "hero.h1": "نظام QR Ordering منظم: الزبون يطلب… الطاقم يراجع… والمطبخ يطبخ.",
+        "hero.p": "تجربة بدون تطبيق للزبون، ولوحتين واضحتين للطاقم والمطبخ.\nكل شيء مصمم لتقليل الأخطاء، وتسريع الخدمة، وتحسين تجربة العملاء.",
+        "hero.ctaPrimary": "احجز تجربة مجانية",
+        "hero.ctaFeatures": "شوف المميزات",
+        "hero.ctaScreens": "واجهات النظام",
 
-    // Mobile menu (better UX + aria)
-    const toggleBtn = document.getElementById("navToggle");
-    const menu = document.getElementById("mobileMenu");
+        "hero.stat1.num": "Staff → Kitchen",
+        "hero.stat1.lbl": "تدفق منظم قبل دخول المطبخ",
+        "hero.stat2.num": "طلبات خدمة",
+        "hero.stat2.lbl": "نادل + نارا + حساب",
+        "hero.stat3.num": "بدون تطبيق",
+        "hero.stat3.lbl": "للزبون: متصفح فقط",
 
-    function setMenu(open){
-      menu.classList.toggle("open", open);
-      toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    }
+        "hero.videoTitle": "عرض النظام (فيديو)",
+        "hero.videoFallback": "متصفحك لا يدعم تشغيل الفيديو",
+        "hero.videoBadge": "Customer → Staff → Kitchen",
+        "hero.videoDesc": "فيديو يوضح المنيو، السلة، طلب الخدمة، لوحة الموظفين، ولوحة المطبخ",
 
-    toggleBtn?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      setMenu(!menu.classList.contains("open"));
-    });
+        "features.h2": "المميزات",
+        "features.p": "بنية واضحة: الزبون يطلب — الطاقم يتحكم — المطبخ يستلم فقط ما تم اعتماده.",
 
-    // close on link click
-    menu?.querySelectorAll("a").forEach(a=>{
-      a.addEventListener("click", ()=> setMenu(false));
-    });
+        "features.c1.h3": "منيو QR مع بحث وتبويبات",
+        "features.c1.p": "واجهة منظمة للأصناف + صور + أسعار + تحكم بالكمية.",
 
-    // close on outside click
-    document.addEventListener("click", (e)=>{
-      if(!menu.classList.contains("open")) return;
-      const clickedInside = menu.contains(e.target) || toggleBtn.contains(e.target);
-      if(!clickedInside) setMenu(false);
-    });
+        "features.c2.h3": "سلة احترافية + ملاحظة الطلب",
+        "features.c2.p": "تعديل الكميات، حذف عناصر، وإضافة ملاحظة، ثم إرسال الطلب.",
 
-    // Toast
-    function toast(msg){
-      const el = document.getElementById("toast");
-      el.textContent = msg;
-      el.style.display = "block";
-      el.style.opacity = "1";
-      clearTimeout(window.__t);
-      window.__t = setTimeout(() => {
-        el.style.opacity = "0";
-        setTimeout(()=> el.style.display = "none", 220);
-      }, 1800);
-    }
+        "features.c3.h3": "تأكيد إرسال الطلب",
+        "features.c3.p": "شاشة نجاح + معلومات الطلب + اختصارات ذكية للتنقل.",
 
-    // Lightbox
-    function openLightbox(src, title){
-      const lb = document.getElementById("lightbox");
-      document.getElementById("lightboxImg").src = src;
-      document.getElementById("lightboxTitle").textContent = title || "Preview";
-      lb.classList.add("open");
-    }
+        "features.c4.h3": "طلبات خدمة من الطاولة",
+        "features.c4.p": "أزرار واضحة: {waiter} / {coal} / {bill} — بإشعار فوري للطاقم.",
+        "features.c4.waiter": "نادل",
+        "features.c4.coal": "نارا",
+        "features.c4.bill": "الحساب",
 
-    function closeLightbox(e){
-      if(!e || e.target.id === "lightbox"){
-        const lb = document.getElementById("lightbox");
-        lb.classList.remove("open");
-        document.getElementById("lightboxImg").src = "";
+        "features.c5.h3": "لوحة الموظفين (Staff Board)",
+        "features.c5.p": "طلبات جديدة مع الوقت والإجمالي وأزرار: تفاصيل / إرسال للمطبخ / إلغاء.",
+
+        "features.c6.h3": "لوحة المطبخ (Kitchen Board)",
+        "features.c6.p": "تعرض فقط الطلبات المعتمدة من الطاقم، مع حالة “قيد التحضير” ثم “تم الإنجاز”.",
+
+        "features.cta.h3": "ميزة قوية: فصل الطلبات عن المطبخ حتى يعتمدها الطاقم",
+        "features.cta.p": "تقل الأخطاء، وتزيد الانسيابية، وتتحسن تجربة الزبون بشكل واضح.",
+        "features.cta.btn": "احجز تجربة مجانية",
+
+        "shots.h2": "واجهات النظام",
+        "shots.p": "لقطات فعلية من تجربة الزبون والطاقم والمطبخ.",
+
+        "shots.menu": "منيو QR",
+        "shots.cart": "السلة",
+        "shots.confirm": "تأكيد الإرسال",
+        "shots.service": "طلب خدمة",
+        "shots.staffBoard": "لوحة الموظفين",
+        "shots.orderDetails": "تفاصيل الطلب",
+        "shots.calls": "نداءات الخدمة",
+        "shots.kitchenBoard": "لوحة المطبخ",
+        "shots.login": "تسجيل الدخول",
+
+        "flow.h2": "التدفق التشغيلي داخل المطعم",
+        "flow.p": "من أول مسح QR حتى تسليم الطلب — بخطوات واضحة.",
+
+        "flow.s1.b": "الزبون يمسح QR ويختار الأصناف",
+        "flow.s1.span": "منيو بتبويبات + صور + تحكم بالكمية داخل كل عنصر.",
+
+        "flow.s2.b": "السلة → ملاحظة الطلب → إرسال",
+        "flow.s2.span": "تحكم كامل بالعناصر مع إجمالي واضح ثم إرسال الطلب.",
+
+        "flow.s3.b": "الطلب يصل للطاقم (لوحة الموظفين)",
+        "flow.s3.span": "الطاقم يراجع التفاصيل ثم يضغط “إرسال للمطبخ”.",
+
+        "flow.s4.b": "المطبخ يستلم فقط ما أرسله الطاقم",
+        "flow.s4.span": "لوحة المطبخ تعرض قيد التحضير ثم تم الإنجاز.",
+
+        "flow.calls.h3": "طلبات الخدمة (الأهم في مطاعم الشيشة)",
+        "flow.calls.p": "الزبون لا يحتاج ينادي بصوت عالي — كل شيء زر واحد.",
+
+        "flow.calls.waiter.b": "استدعاء النادل",
+        "flow.calls.waiter.span": "إشعار فوري يظهر في “نداءات الخدمة” مع رقم الطاولة ووقت الطلب.",
+
+        "flow.calls.coal.b": "نارا (الشيشة)",
+        "flow.calls.coal.span": "طلب تجديد الفحم يظهر للطاقم كنداء مستقل.",
+
+        "flow.calls.bill.b": "طلب الحساب",
+        "flow.calls.bill.span": "الطاقم يستلم إشعار تجهيز الفاتورة للطاولة بسرعة.",
+
+        "flow.brandReady.h3": "جاهز نجهز نسخة Brand لمطعمك",
+        "flow.brandReady.p": "شعار المطعم + الألوان + QR لكل طاولة + حسابات للطاقم والمطبخ.",
+        "flow.brandReady.btn": "احجز تجربة مجانية",
+
+        "faq.h2": "أسئلة شائعة",
+        "faq.p": "أكثر الأسئلة المتكررة قبل طلب الديمو.",
+
+        "faq.q1": "ما فائدة النظام لصاحب المطعم؟ ولماذا أحتاجه فعلًا؟",
+        "faq.a1":
+          "هذا النظام ليس مجرد منيو QR، بل أداة تشغيل متكاملة تساعدك على:\n\n" +
+          "📵 وداعًا للمنيو الورقي: تحديث الأسعار والأصناف فورًا بدون طباعة متكررة.\n\n" +
+          "👥 تقليل الضغط على الطاقم: الزبون يطلب بنفسه + أزرار خدمة واضحة، مما يقلل الحركة العشوائية.\n\n" +
+          "📈 زيادة المبيعات: عرض منيو كامل بصور وأسعار يرفع متوسط الطلب.\n\n" +
+          "⏱️ تسريع الخدمة وتقليل الفوضى: تدفق منظم بين الطاولة والطاقم والمطبخ.\n\n" +
+          "❌ تقليل الأخطاء والخسائر: المطبخ لا يستلم أي طلب إلا بعد اعتماد الموظف.\n\n" +
+          "🔥 مثالي لمطاعم الشيشة: طلب “نارا” يصل فورًا للطاقم.\n\n" +
+          "💡 صورة احترافية: تجربة عصرية بدون تطبيق أو أجهزة إضافية.",
+
+        "faq.q2": "هل يحتاج الزبون تحميل تطبيق؟",
+        "faq.a2": "لا، التجربة كاملة عبر المتصفح بعد مسح QR.",
+
+        "faq.q3": "ما الفرق بين لوحة الموظفين ولوحة المطبخ؟",
+        "faq.a3": "لوحة الموظفين تستقبل الطلبات من الطاولات وتقرر إرسالها للمطبخ. لوحة المطبخ تعرض فقط ما تم إرساله للمطبخ.",
+
+        "faq.q4": "هل طلبات الخدمة (نادل/نارا/حساب) منفصلة عن طلبات الطعام؟",
+        "faq.a4": "نعم، تظهر كـ “نداءات” في لوحة الموظفين لتتعامل معها بسرعة بدون خلطها مع طلبات المطبخ.",
+
+        "contact.h2": "تواصل معنا عبر واتساب",
+        "contact.p": "اضغط الزر لفتح محادثة مباشرة وإرسال طلب الديمو.",
+
+        "contact.readyTitle": "جاهز للديمو؟",
+        "contact.readyDesc": "سنرتب لك إعداد الطاولات + QR + لوحة الموظفين + لوحة المطبخ + (نادل/نارا/حساب)",
+
+        "contact.igBtn": "مراسلتنا على إنستغرام 📩",
+        "contact.suggestedMsgTitle": "رسالة مقترحة (انسخها وأرسلها لنا):",
+        "contact.copyBtn": "نسخ الرسالة",
+        "contact.note": "* سيتم فتح حساب إنستغرام، فقط الصق الرسالة داخل المحادثة.",
+
+        "contact.msgTemplate":
+          "مرحبًا 👋\nأريد حجز ديمو لنظام syrianorder\n\n- اسم المطعم:\n- المدينة:\n- عدد الطاولات:\n- ملاحظات:",
+
+        "footer.links": "روابط",
+        "footer.try": "جاهز للتجريب؟",
+        "footer.cta": "احجز تجربة مجانية",
+        "footer.rights": "© {year} — جميع الحقوق محفوظة",
+
+        "lightbox.preview": "Preview",
+        "lightbox.close": "إغلاق ✕",
+
+        "toast.copyOk": "تم نسخ الرسالة ✅",
+        "toast.copyFail": "تعذر النسخ، انسخ الرسالة يدويًا.",
+
+        // Lightbox title keys
+        "lightbox.menu": "واجهة المنيو (QR)",
+        "lightbox.cart": "السلة + ملاحظة الطلب + إرسال",
+        "lightbox.confirm": "تم إرسال الطلب بنجاح",
+        "lightbox.service": "طلب خدمة (نادل/نارا/حساب)",
+        "lightbox.staffOrders": "لوحة الموظفين - الطلبات الجديدة",
+        "lightbox.staffOrderDetails": "لوحة الموظفين - تفاصيل الطلب",
+        "lightbox.staffServices": "لوحة الموظفين - النداءات النشطة",
+        "lightbox.kitchen": "لوحة المطبخ - قيد التحضير",
+        "lightbox.login": "تسجيل دخول الموظفين"
+      },
+
+      en: {
+        "brand.name": "Syrianorder",
+        "brand.tagline": "QR Ordering + Staff Board + Kitchen Board + Service Calls",
+
+        "nav.features": "Features",
+        "nav.screenshots": "Screens",
+        "nav.flow": "Flow",
+        "nav.faq": "FAQ",
+        "nav.contact": "Contact",
+        "nav.cta": "Book a free demo",
+        "nav.openMenu": "Open menu",
+
+        "hero.pill": "⚡ From table to kitchen in seconds — without chaos",
+        "hero.h1": "A structured QR ordering system: customers order… staff review… kitchen cooks.",
+        "hero.p": "No app for customers, and two clear dashboards for staff and kitchen.\nEverything is designed to reduce mistakes, speed up service, and improve the customer experience.",
+        "hero.ctaPrimary": "Book a free demo",
+        "hero.ctaFeatures": "See features",
+        "hero.ctaScreens": "System screens",
+
+        "hero.stat1.num": "Staff → Kitchen",
+        "hero.stat1.lbl": "Controlled flow before the kitchen",
+        "hero.stat2.num": "Service calls",
+        "hero.stat2.lbl": "Waiter + Coal + Bill",
+        "hero.stat3.num": "No app",
+        "hero.stat3.lbl": "Customer uses the browser",
+
+        "hero.videoTitle": "System preview (video)",
+        "hero.videoFallback": "Your browser does not support video playback",
+        "hero.videoBadge": "Customer → Staff → Kitchen",
+        "hero.videoDesc": "Video shows menu, cart, service call, staff board, and kitchen board",
+
+        "features.h2": "Features",
+        "features.p": "A clear structure: customer orders — staff controls — kitchen receives only approved orders.",
+
+        "features.c1.h3": "QR menu with search & categories",
+        "features.c1.p": "Organized categories + images + prices + quantity controls.",
+
+        "features.c2.h3": "Pro cart + order note",
+        "features.c2.p": "Edit quantities, remove items, add notes, then send the order.",
+
+        "features.c3.h3": "Order sent confirmation",
+        "features.c3.p": "Success screen + order info + smart navigation shortcuts.",
+
+        "features.c4.h3": "Table service requests",
+        "features.c4.p": "Clear buttons: {waiter} / {coal} / {bill} — with instant staff notification.",
+        "features.c4.waiter": "Waiter",
+        "features.c4.coal": "Coal",
+        "features.c4.bill": "Bill",
+
+        "features.c5.h3": "Staff Board",
+        "features.c5.p": "New orders with time & total and actions: Details / Send to kitchen / Cancel.",
+
+        "features.c6.h3": "Kitchen Board",
+        "features.c6.p": "Shows only staff-approved orders, with statuses: “In progress” then “Done”.",
+
+        "features.cta.h3": "Power feature: kitchen only receives staff-approved orders",
+        "features.cta.p": "Fewer mistakes, smoother flow, and a noticeably better customer experience.",
+        "features.cta.btn": "Book a free demo",
+
+        "shots.h2": "System screens",
+        "shots.p": "Real screenshots from customer, staff, and kitchen experiences.",
+
+        "shots.menu": "QR Menu",
+        "shots.cart": "Cart",
+        "shots.confirm": "Confirmation",
+        "shots.service": "Service request",
+        "shots.staffBoard": "Staff board",
+        "shots.orderDetails": "Order details",
+        "shots.calls": "Service calls",
+        "shots.kitchenBoard": "Kitchen board",
+        "shots.login": "Login",
+
+        "flow.h2": "Restaurant operational flow",
+        "flow.p": "From scanning the QR to serving the order — in clear steps.",
+
+        "flow.s1.b": "Customer scans the QR and picks items",
+        "flow.s1.span": "Menu categories + images + quantity controls per item.",
+
+        "flow.s2.b": "Cart → order note → send",
+        "flow.s2.span": "Full item control with clear total, then send the order.",
+
+        "flow.s3.b": "Order arrives to staff (Staff Board)",
+        "flow.s3.span": "Staff reviews details then clicks “Send to kitchen”.",
+
+        "flow.s4.b": "Kitchen receives only staff-sent orders",
+        "flow.s4.span": "Kitchen board shows “In progress” then “Done”.",
+
+        "flow.calls.h3": "Service calls (critical for shisha lounges)",
+        "flow.calls.p": "No need to shout — everything is one button.",
+
+        "flow.calls.waiter.b": "Call the waiter",
+        "flow.calls.waiter.span": "Instant notification appears in “Service calls” with table number and time.",
+
+        "flow.calls.coal.b": "Coal (shisha)",
+        "flow.calls.coal.span": "A coal refill request appears as a separate call for staff.",
+
+        "flow.calls.bill.b": "Request the bill",
+        "flow.calls.bill.span": "Staff receives a notification to prepare the invoice quickly.",
+
+        "flow.brandReady.h3": "Ready to brand it for your restaurant",
+        "flow.brandReady.p": "Restaurant logo + colors + QR per table + staff & kitchen accounts.",
+        "flow.brandReady.btn": "Book a free demo",
+
+        "faq.h2": "FAQ",
+        "faq.p": "Most common questions before booking a demo.",
+
+        "faq.q1": "What’s the value for the restaurant owner — and why do I actually need it?",
+        "faq.a1":
+          "This is not just a QR menu — it’s a complete operating tool that helps you:\n\n" +
+          "📵 Say goodbye to paper menus: update prices and items instantly without re-printing.\n\n" +
+          "👥 Reduce staff pressure: customers order themselves + clear service buttons, reducing random movement.\n\n" +
+          "📈 Increase sales: a full menu with images and prices increases average order value.\n\n" +
+          "⏱️ Speed up service and reduce chaos: structured flow between table, staff, and kitchen.\n\n" +
+          "❌ Reduce mistakes and loss: kitchen receives nothing until staff approves.\n\n" +
+          "🔥 Ideal for shisha lounges: “Coal” requests reach staff instantly.\n\n" +
+          "💡 Professional image: modern experience without apps or extra devices.",
+
+        "faq.q2": "Does the customer need to install an app?",
+        "faq.a2": "No. The full experience works in the browser after scanning the QR.",
+
+        "faq.q3": "What’s the difference between Staff Board and Kitchen Board?",
+        "faq.a3": "The Staff Board receives table orders and decides when to send them to the kitchen. The Kitchen Board shows only what staff sent.",
+
+        "faq.q4": "Are service calls (waiter/coal/bill) separate from food orders?",
+        "faq.a4": "Yes. They appear as “calls” in the Staff Board so they’re handled quickly without mixing with kitchen orders.",
+
+        "contact.h2": "Contact us on instagram",
+        "contact.p": "Tap the button to open a direct chat and request the demo.",
+
+        "contact.readyTitle": "Ready for the demo?",
+        "contact.readyDesc": "We’ll set up tables + QR + Staff Board + Kitchen Board + (Waiter/Coal/Bill)",
+
+        "contact.igBtn": "Message us on Instagram 📩",
+        "contact.suggestedMsgTitle": "Suggested message (copy & send):",
+        "contact.copyBtn": "Copy message",
+        "contact.note": "* Instagram will open — just paste the message into the chat.",
+
+        "contact.msgTemplate":
+          "Hi 👋\nI’d like to book a demo for Syrianorder.\n\n- Restaurant name:\n- City:\n- Number of tables:\n- Notes:",
+
+        "footer.links": "Links",
+        "footer.try": "Ready to try?",
+        "footer.cta": "Book a free demo",
+        "footer.rights": "© {2026} — All rights reserved",
+
+        "lightbox.preview": "Preview",
+        "lightbox.close": "Close ✕",
+
+        "toast.copyOk": "Message copied ✅",
+        "toast.copyFail": "Copy failed — please copy manually.",
+
+        "lightbox.menu": "Menu (QR)",
+        "lightbox.cart": "Cart + note + send",
+        "lightbox.confirm": "Order sent successfully",
+        "lightbox.service": "Service request (Waiter/Coal/Bill)",
+        "lightbox.staffOrders": "Staff board - new orders",
+        "lightbox.staffOrderDetails": "Staff board - order details",
+        "lightbox.staffServices": "Staff board - active calls",
+        "lightbox.kitchen": "Kitchen board - in progress",
+        "lightbox.login": "Staff login"
       }
+    };
+
+    // =========================
+    // i18n helpers
+    // =========================
+    function getLang() {
+  return localStorage.getItem("lang") || "ar";
+}
+
+function setLang(lang) {
+  localStorage.setItem("lang", lang);
+  applyLang(lang);
+  // also rebuild WA link (message language changes)
+  setupWhatsAppLink(lang);
+}
+
+function t(lang, key, vars = {}) {
+  const raw = (I18N[lang] && I18N[lang][key]) || key;
+  return raw.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? `{${k}}`));
+}
+
+function applyLang(lang) {
+  // Set direction + language
+  document.body.dataset.lang = lang;
+  document.body.setAttribute("lang", lang);
+  document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+
+  // Update all text nodes
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+
+    // Special case: features.c4.p has bold placeholders
+    if (key === "features.c4.p") {
+      const html = t(lang, key, {
+        waiter: `<b>${t(lang, "features.c4.waiter")}</b>`,
+        coal: `<b>${t(lang, "features.c4.coal")}</b>`,
+        bill: `<b>${t(lang, "features.c4.bill")}</b>`
+      });
+      el.innerHTML = html;
+      return;
     }
 
-    document.addEventListener("keydown", (ev)=>{
-      if(ev.key === "Escape") closeLightbox();
-    });
+    // FAQ first answer is multiline: keep line breaks
+    if (key === "faq.a1") {
+      el.textContent = t(lang, key);
+      el.style.whiteSpace = "pre-wrap";
+      return;
+    }
+
+    // Default
+    el.textContent = t(lang, key);
+  });
+
+  // Instagram message template (box)
+  const igMessage = document.getElementById("igMessage");
+  if (igMessage) igMessage.textContent = t(lang, "contact.msgTemplate");
+
+  // Lightbox close button (if open)
+  const closeBtn = document.querySelector(".lightbox .x");
+  if (closeBtn) closeBtn.textContent = t(lang, "lightbox.close");
+}
+const WHATSAPP_NUMBER = "491775022755"; // بدون +
+function setupWhatsAppLink(lang = getLang()) {
+  const waBtn = document.getElementById("waBtn");
+  if (!waBtn) return;
+
+  const waMessage = t(lang, "wa.msgTemplate");
+  waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+}
+
+// Copy Instagram message
+function copyInstagramMessage() {
+  const lang = getLang();
+  const text = document.getElementById("igMessage")?.innerText || "";
+  navigator.clipboard.writeText(text).then(() => {
+    toast(t(lang, "toast.copied"));
+  }).catch(() => {
+    toast(t(lang, "toast.copyFail"));
+  });
+}
+
+// Mobile menu (better UX + aria)
+const toggleBtn = document.getElementById("navToggle");
+const menu = document.getElementById("mobileMenu");
+
+function setMenu(open) {
+  if (!menu || !toggleBtn) return;
+  menu.classList.toggle("open", open);
+  toggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+}
+
+toggleBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  setMenu(!menu.classList.contains("open"));
+});
+
+// close on link click
+menu?.querySelectorAll("a").forEach(a => {
+  a.addEventListener("click", () => setMenu(false));
+});
+
+// close on outside click
+document.addEventListener("click", (e) => {
+  if (!menu?.classList.contains("open")) return;
+  const clickedInside = menu.contains(e.target) || toggleBtn.contains(e.target);
+  if (!clickedInside) setMenu(false);
+});
+
+// Toast
+function toast(msg) {
+  const el = document.getElementById("toast");
+  if (!el) return;
+  el.textContent = msg;
+  el.style.display = "block";
+  el.style.opacity = "1";
+  clearTimeout(window.__t);
+  window.__t = setTimeout(() => {
+    el.style.opacity = "0";
+    setTimeout(() => el.style.display = "none", 220);
+  }, 1800);
+}
+
+// Lightbox (now uses title KEY)
+function openLightbox(src, titleKey) {
+  const lang = getLang();
+  const lb = document.getElementById("lightbox");
+  const img = document.getElementById("lightboxImg");
+  const titleEl = document.getElementById("lightboxTitle");
+
+  if (!lb || !img || !titleEl) return;
+
+  img.src = src;
+  titleEl.textContent = titleKey ? t(lang, titleKey) : t(lang, "lightbox.preview");
+
+  // update close button text
+  const closeBtn = document.querySelector(".lightbox .x");
+  if (closeBtn) closeBtn.textContent = t(lang, "lightbox.close");
+
+  lb.classList.add("open");
+}
+
+function closeLightbox(e) {
+  if (!e || e.target?.id === "lightbox") {
+    const lb = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
+    if (!lb || !img) return;
+    lb.classList.remove("open");
+    img.src = "";
+  }
+}
+
+document.addEventListener("keydown", (ev) => {
+  if (ev.key === "Escape") closeLightbox();
+});
+
+/* =========================
+   Language switcher bindings
+   (Requires buttons in HTML:
+   <button data-set-lang="ar">AR</button>
+   <button data-set-lang="en">EN</button>
+========================= */
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-set-lang]");
+  if (!btn) return;
+  setLang(btn.getAttribute("data-set-lang"));
+});
+
+/* =========================
+   Init
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  setupFooterYear();
+  const lang = getLang();
+  applyLang(lang);
+  setupWhatsAppLink(lang);
+});
+
+
+
   </script>
 </body>
 </html>
