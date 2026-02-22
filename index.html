@@ -774,6 +774,232 @@ html[dir="rtl"] .process-steps{border-right:2px solid var(--border); border-left
   outline: none !important;
   box-shadow: none !important;
 }
+/* =========================================================
+   CONTACT SECTION (Pro Card) — Stable Responsive Layout
+   Works perfectly for your exact HTML
+   ========================================================= */
+
+#contact .contact-wrapper{
+  overflow: hidden;
+}
+
+/* Card container */
+.contact-card-pro{
+  background: rgba(0,0,0,.26);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 26px;
+  padding: 18px;
+  box-shadow: 0 18px 55px rgba(0,0,0,.42);
+}
+
+/* Title row */
+.contact-card-pro .card-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.contact-card-pro .card-title h3{
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 900;
+  letter-spacing: -.2px;
+  color: #fff;
+}
+
+/* Chat icon */
+.contact-card-pro .chat-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.11);
+  flex: 0 0 auto;
+}
+.contact-card-pro .chat-icon svg{
+  width: 22px;
+  height: 22px;
+  color: rgba(255,255,255,.92);
+}
+
+/* Actions wrapper */
+.contact-card-pro .contact-actions{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Action button = grid stable on all screens */
+.contact-card-pro .contact-action{
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 56px 1fr 28px; /* icon | text | arrow */
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 14px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.09);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.contact-card-pro .contact-action:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.065);
+  border-color: rgba(255,255,255,.16);
+}
+.contact-card-pro .contact-action:active{
+  transform: translateY(0);
+}
+
+/* Text block */
+.contact-card-pro .ca-text{
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-card-pro .ca-title{
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-card-pro .ca-sub{
+  font-size: .92rem;
+  color: rgba(234,240,255,.70);
+  line-height: 1.2;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Arrow */
+.contact-card-pro .ca-arrow{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  color: rgba(255,255,255,.75);
+  font-weight: 900;
+}
+
+/* Icon box (SVG normalized) */
+.contact-card-pro .ca-icon{
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.10);
+  flex: 0 0 auto;
+}
+
+.contact-card-pro .ca-icon svg{
+  width: 26px;
+  height: 26px;
+  display: block;
+  color: currentColor;
+}
+
+/* WhatsApp theme */
+.contact-card-pro .contact-action.wa .ca-icon{
+  background: rgba(34,197,94,.15);
+  border-color: rgba(34,197,94,.22);
+  color: #22c55e;
+}
+
+/* Email theme */
+.contact-card-pro .contact-action.mail .ca-icon{
+  background: rgba(59,130,246,.15);
+  border-color: rgba(59,130,246,.22);
+  color: #60a5fa;
+}
+
+/* Divider */
+.contact-card-pro .contact-divider-pro{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0;
+  color: rgba(234,240,255,.55);
+  font-weight: 800;
+  font-size: .95rem;
+}
+.contact-card-pro .contact-divider-pro::before,
+.contact-card-pro .contact-divider-pro::after{
+  content: "";
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  flex: 1;
+}
+
+/* RTL: make it match your design (icon right, arrow left) */
+html[dir="rtl"] .contact-card-pro .contact-action{
+  grid-template-columns: 28px 1fr 56px; /* arrow | text | icon */
+}
+html[dir="rtl"] .contact-card-pro .ca-arrow{ order: 1; }
+html[dir="rtl"] .contact-card-pro .ca-text{ order: 2; text-align: right; }
+html[dir="rtl"] .contact-card-pro .ca-icon{ order: 3; }
+
+/* LTR: icon left, arrow right */
+html[dir="ltr"] .contact-card-pro .contact-action{
+  grid-template-columns: 56px 1fr 28px; /* icon | text | arrow */
+}
+html[dir="ltr"] .contact-card-pro .ca-text{ text-align: left; }
+
+/* Ultra small screens: allow email to wrap nicely */
+@media (max-width: 380px){
+  .contact-card-pro{
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .contact-card-pro .contact-action{
+    padding: 12px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .contact-card-pro .ca-icon{
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+  }
+
+  .contact-card-pro .ca-title{
+    font-size: .96rem;
+  }
+
+  .contact-card-pro .ca-sub{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.35;
+  }
+}
 </style>
 </head>
 
@@ -1207,7 +1433,7 @@ html[dir="rtl"] .process-steps{border-right:2px solid var(--border); border-left
 	</span>
       <span class="ca-text">
         <span class="ca-title" data-i18n="contact.emailBtn"></span>
-        <span class="ca-sub">info@syrianorder.com</span>
+        
       </span>
       <span class="ca-arrow">↗</span>
     </a>
@@ -1259,7 +1485,7 @@ html[dir="rtl"] .process-steps{border-right:2px solid var(--border); border-left
 	</span>
             <div class="fc-text">
               <div class="fc-label" data-i18n="footer.mailLabel">Mail:</div>
-              <a class="fc-value link" href="mailto:info@syrianorder.com">info@syrianorder.com</a>
+              <a class="fc-value link" href="mailto:info@syrianorder.com"></a>
             </div>
           </div>
 
@@ -1670,11 +1896,11 @@ html[dir="rtl"] .process-steps{border-right:2px solid var(--border); border-left
 		  "contact.readyTitle": "Message us directly",
 		  "contact.suggestedMsgTitle": "Suggested message:",
 		  "contact.copyBtn": "Copy text",
-		  "contact.igBtn": "Message us on Instagram",
+		  
 		  "contact.note": "We’ll reply as soon as possible.",
 		  "contact.directTitle": "Contact us directly",
 "contact.or": "OR",
-"contact.emailBtn": "Contact us via email",
+"contact.emailBtn": "email",
 
 		  "contact.msgTemplate":
 			"Hi 👋,\nI'm interested in trying Syrianorder for my restaurant.\n\n- Name:\n- Restaurant name:\n- City:",
@@ -1725,8 +1951,8 @@ html[dir="rtl"] .process-steps{border-right:2px solid var(--border); border-left
 		  "lightbox.login": "Staff login",
 		  // CONTACT UI
 			"contact.whatsappTitle": "Contact us directly via WhatsApp",
-			"contact.whatsappBtn": "Message us on WhatsApp",
-			"contact.whatsappNote": "WhatsApp will open directly to send your message.",
+			"contact.whatsappBtn": "WhatsApp",
+			
 
 			// FOOTER EMAIL
 			"footer.emailLabel": "Email",
