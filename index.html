@@ -633,6 +633,119 @@ a { color: inherit; text-decoration: none; }
   transition: all 0.3s ease; opacity: 1;
 }
 .toast.hidden { opacity: 0; transform: translate(-50%, 20px); pointer-events: none; }
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.footer-social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+..footer-social-icons {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.icon-link {
+  color: #aaa;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.icon-link svg {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-link:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.footer-email{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  width: fit-content;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+
+  color: rgba(255,255,255,0.9);
+  transition: 0.25s ease;
+}
+
+.footer-email:hover{
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+
+.fe-icon{
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  background: rgba(59,130,246,0.14);
+  border: 1px solid rgba(59,130,246,0.20);
+  font-size: 14px;
+}
+
+.fe-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.fe-label{
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+}
+
+.fe-value{
+  font-size: 13px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 480px){
+  .footer-email{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+
 </style>
 </head>
 
@@ -816,90 +929,7 @@ a { color: inherit; text-decoration: none; }
 </section>
 
   <!-- SCREENSHOTS -->
- <section class="section" id="screenshots">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2 data-i18n="shots.h2">واجهات النظام</h2>
-        <p data-i18n="shots.p">لقطات فعلية من تجربة الزبون والطاقم والمطبخ.</p>
-      </div>
-    </div>
-
-    <div class="shots-grid">
-      <button class="shot-card big" type="button" onclick="openLightbox('assets/menu.jpg','lightbox.menu')">
-        <div class="shot-media">
-          <img src="assets/menu.jpg" alt="Menu Interface" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.menu">منيو QR</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/cart.jpg','lightbox.cart')">
-        <div class="shot-media">
-          <img src="assets/cart.jpg" alt="Cart Interface" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.cart">السلة</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/order-confirm.jpg','lightbox.confirm')">
-        <div class="shot-media">
-          <img src="assets/order-confirm.jpg" alt="Order Confirmation" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.confirm">تأكيد الإرسال</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/send-service.jpg','lightbox.service')">
-        <div class="shot-media">
-          <img src="assets/send-service.jpg" alt="Service Request" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.service">طلب خدمة</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/staff-orders.jpg','lightbox.staffOrders')">
-        <div class="shot-media">
-          <img src="assets/staff-orders.jpg" alt="Staff Board" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.staffBoard">لوحة الموظفين</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/staff-order-details.jpg','lightbox.staffOrderDetails')">
-        <div class="shot-media">
-          <img src="assets/staff-order-details.jpg" alt="Order Details" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.orderDetails">تفاصيل الطلب</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/staff-services.jpg','lightbox.staffServices')">
-        <div class="shot-media">
-          <img src="assets/staff-services.jpg" alt="Service Calls" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.calls">نداءات الخدمة</span>
-      </button>
-
-      <button class="shot-card big" type="button" onclick="openLightbox('assets/kitchen.jpg','lightbox.kitchen')">
-        <div class="shot-media">
-          <img src="assets/kitchen.jpg" alt="Kitchen Display" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.kitchenBoard">لوحة المطبخ</span>
-      </button>
-
-      <button class="shot-card" type="button" onclick="openLightbox('assets/login.jpg','lightbox.login')">
-        <div class="shot-media">
-          <img src="assets/login.jpg" alt="Login Screen" loading="lazy">
-          <div class="shot-overlay"></div>
-        </div>
-        <span class="shot-tag" data-i18n="shots.login">تسجيل الدخول</span>
-      </button>
-    </div>
-  </div>
-</section>
+ 
 
   <!-- FLOW -->
 <div class="sections-wrapper">
@@ -980,7 +1010,7 @@ a { color: inherit; text-decoration: none; }
           </div>
 
           <div class="branding-cta">
-            <p data-i18n="flow.brandReady.p">نصمم النظام بهوية مطعمك وشعارك.</p>
+            
             <a href="#contact" class="btn btn-sm btn-primary" data-i18n="flow.brandReady.btn">ابدأ الآن</a>
           </div>
         </div>
@@ -1044,53 +1074,44 @@ a { color: inherit; text-decoration: none; }
 
 </div>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
+<!-- CONTACT -->
+<section class="section" id="contact">
   <div class="container">
     <div class="contact-wrapper">
       
       <div class="contact-header">
-        <h2 data-i18n="contact.h2">ابدأ رحلة تطوير مطعمك اليوم</h2>
-        <p data-i18n="contact.p">لا حاجة لبطاقات ائتمان أو تعاقدات معقدة. تواصل معنا لنشرح لك النظام في 10 دقائق.</p>
+        <h2 data-i18n="contact.h2"></h2>
+        <p data-i18n="contact.p"></p>
         
         <div class="features-list-check">
-          <div class="check-item">✅ <span data-i18n="contact.check1">إعداد كامل للمنيو والطاولات</span></div>
-          <div class="check-item">✅ <span data-i18n="contact.check2">تدريب للطاقم والكاشير</span></div>
-          <div class="check-item">✅ <span data-i18n="contact.check3">دعم فني مستمر</span></div>
+          <div class="check-item" data-i18n="contact.check1"></div>
+          <div class="check-item" data-i18n="contact.check2"></div>
+          <div class="check-item" data-i18n="contact.check3"></div>
         </div>
       </div>
 
       <div class="contact-card">
-		  <div class="card-title">
-			<span class="icon">💬</span>
-			<h3 data-i18n="contact.readyTitle">تواصل معنا مباشرة</h3>
-		  </div>
+        <div class="card-title">
+          <span class="icon">💬</span>
+          <h3 data-i18n="contact.whatsappTitle"></h3>
+        </div>
 
-		  <div class="message-box">
-			<p class="message-label" data-i18n="contact.suggestedMsgTitle">نسخة مقترحة للرسالة:</p>
-			<div class="code-block" id="igMessage">مرحباً 👋،
-			مهتم بتجربة نظام Syrianorder لمطعمي.
-			
-				- الاسم:
-				- اسم المطعم:
-				- المدينة:
-				</div>
-			
-			<button class="copy-btn" type="button" onclick="copyInstagramMessage()">
-			  <span class="icon">📋</span> <span data-i18n="contact.copyBtn">نسخ النص</span>
-			</button>
-		  </div>
-
-		  <a id="igBtn" class="instagram-btn" href="https://www.instagram.com/syrianorder/" target="_blank">
-			<span class="icon">📸</span> <span data-i18n="contact.igBtn">مراسلتنا على إنستغرام</span>
-		  </a>
-		  
-		  <p class="fine-print" data-i18n="contact.note">سنرد عليك في أسرع وقت ممكن.</p>
-		</div>
+        <a 
+          class="whatsapp-btn" 
+          href="https://wa.me/963983998542?text=مرحباً%20👋،%20مهتم%20بتجربة%20نظام%20Syrianorder%20لمطعمي.%0A%0A-الاسم:%0A-اسم%20المطعم:%0A-المدينة:" 
+          target="_blank"
+        >
+          <span class="icon">🟢</span>
+          <span data-i18n="contact.whatsappBtn"></span>
+        </a>
+        
+        <p class="fine-print" data-i18n="contact.whatsappNote"></p>
+      </div>
 
     </div>
   </div>
 </section>
+
 
 <footer class="site-footer">
   <div class="container">
@@ -1098,8 +1119,56 @@ a { color: inherit; text-decoration: none; }
       
       <div class="footer-brand">
         <div class="footer-logo">Syrianorder</div>
-        <p class="footer-desc" data-i18n="brand.tagline">الحل المتكامل لإدارة طلبات المطاعم الحديثة.</p>
-        <div class="rights" id="footerRights" data-i18n="footer.rights">© 2026 جميع الحقوق محفوظة</div>
+        <p class="footer-desc" data-i18n="brand.tagline">
+          الحل المتكامل لإدارة طلبات المطاعم الحديثة.
+        </p>
+
+        <div class="rights" id="footerRights" data-i18n="footer.rights">
+          © 2026 جميع الحقوق محفوظة
+        </div>
+		
+
+        <!-- 🔥 ADDED SOCIAL ICONS (Nothing else changed) -->
+        <div class="footer-social-icons">
+		
+
+		  <!-- WhatsApp -->
+		  <a href="https://wa.me/963983998542" target="_blank" aria-label="WhatsApp" class="icon-link">
+			<svg viewBox="0 0 24 24">
+			  <path fill="currentColor" d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.7-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.07-1.11l-.29-.17-3.38.89.9-3.3-.19-.3A8 8 0 1 1 12 20z"/>
+			  <path fill="currentColor" d="M16.72 14.1c-.27-.14-1.6-.8-1.85-.9-.25-.09-.43-.14-.61.14-.18.27-.7.9-.86 1.08-.16.18-.31.2-.58.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.35-1.58-1.51-1.85-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.49-.84-2.04-.22-.54-.45-.47-.61-.48h-.52c-.18 0-.47.07-.72.35-.25.27-.95.94-.95 2.3 0 1.36.98 2.67 1.12 2.86.14.18 1.94 3 4.7 4.21.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.6-.66 1.82-1.3.22-.64.22-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/>
+			</svg>
+		  </a>
+
+		  <!-- Facebook -->
+		  <a href="https://www.facebook.com/share/19wb2nyHMF/" target="_blank" aria-label="Facebook" class="icon-link">
+			<svg viewBox="0 0 24 24">
+			  <path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.88v-6.99H8v-2.89h2.4V9.8c0-2.37 1.42-3.68 3.6-3.68 1.04 0 2.13.18 2.13.18v2.34h-1.2c-1.18 0-1.54.73-1.54 1.48v1.78H16l-.4 2.89h-2.2v6.99A10 10 0 0 0 22 12z"/>
+			</svg>
+		  </a>
+
+		  <!-- Instagram -->
+		  <a href="https://www.instagram.com/syrianorder/" target="_blank" aria-label="Instagram" class="icon-link">
+			<svg viewBox="0 0 24 24">
+			  <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/>
+			  <circle cx="12" cy="12" r="3.2" fill="currentColor"/>
+			  <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+			</svg>
+		  </a>
+
+		</div>
+		
+		<!-- ✅ Email (no copy button) -->
+		<a class="footer-email" href="mailto:info@syrianorder.com" aria-label="Email Syrianorder">
+		  <span class="fe-icon">✉️</span>
+		  <span class="fe-text">
+			<span class="fe-label" data-i18n="footer.emailLabel"></span>
+			<span class="fe-value">info@syrianorder.com</span>
+		  </span>
+		</a>
+
+        <!-- 🔥 END ADDITION -->
+
       </div>
 
       <div class="footer-links">
@@ -1115,12 +1184,15 @@ a { color: inherit; text-decoration: none; }
       <div class="footer-cta">
         <h4 data-i18n="footer.try">هل أنت مستعد؟</h4>
         <p data-i18n="contact.readyDesc">انقل مطعمك للمستوى التالي.</p>
-        <a class="btn btn-primary btn-sm" href="#contact" data-i18n="footer.cta">راسلنا للحجز</a>
+        <a class="btn btn-primary btn-sm" href="#contact" data-i18n="footer.cta">
+          راسلنا للحجز
+        </a>
       </div>
 
     </div>
   </div>
 </footer>
+
 
 <div id="toast" class="toast hidden">تم نسخ النص بنجاح! ✅</div>
 
@@ -1300,7 +1372,14 @@ a { color: inherit; text-decoration: none; }
 	  "lightbox.staffOrderDetails": "لوحة الموظفين - تفاصيل الطلب",
 	  "lightbox.staffServices": "لوحة الموظفين - النداءات النشطة",
 	  "lightbox.kitchen": "لوحة المطبخ - قيد التحضير",
-	  "lightbox.login": "تسجيل دخول الموظفين"
+	  "lightbox.login": "تسجيل دخول الموظفين",
+	  // CONTACT UI
+		"contact.whatsappTitle": "تواصل معنا مباشرة عبر واتساب",
+		"contact.whatsappBtn": "مراسلتنا على واتساب",
+		"contact.whatsappNote": "سيتم فتح واتساب مباشرة لإرسال الرسالة.",
+
+		// FOOTER EMAIL
+		"footer.emailLabel": "البريد الإلكتروني"
       },
 
       en: {
@@ -1468,7 +1547,14 @@ a { color: inherit; text-decoration: none; }
 		  "lightbox.staffOrderDetails": "Staff board - order details",
 		  "lightbox.staffServices": "Staff board - active calls",
 		  "lightbox.kitchen": "Kitchen board - in progress",
-		  "lightbox.login": "Staff login"
+		  "lightbox.login": "Staff login",
+		  // CONTACT UI
+			"contact.whatsappTitle": "Contact us directly via WhatsApp",
+			"contact.whatsappBtn": "Message us on WhatsApp",
+			"contact.whatsappNote": "WhatsApp will open directly to send your message.",
+
+			// FOOTER EMAIL
+			"footer.emailLabel": "Email"
       }
     };
 // =========================
@@ -1477,6 +1563,18 @@ a { color: inherit; text-decoration: none; }
 function getLang() {
   return localStorage.getItem("lang") || "ar";
 }
+function copyFooterEmail(){
+    const email = "info@syrianorder.com";
+    navigator.clipboard.writeText(email).then(() => {
+      // لو عندك toast جاهز بالصفحة استخدمه
+      const t = document.getElementById("toast");
+      if(t){
+        t.textContent = "تم نسخ الإيميل ✅";
+        t.classList.remove("hidden");
+        setTimeout(() => t.classList.add("hidden"), 1600);
+      }
+    }).catch(() => {});
+  }
 
 function setLang(lang) {
   localStorage.setItem("lang", lang);
