@@ -1,0 +1,22 @@
+image:
+  repository: fadidasus/order-sys
+  tag: "landing-page-initial"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 32Mi
+  limits:
+    memory: 64Mi
+
+service:
+  port: 8080
+
+ingress:
+  hosts:
+    - test.syrianorder.com
+  tlsSecret: landing-page-tls
+  clusterIssuer: letsencrypt-prod
