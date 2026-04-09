@@ -1,11 +1,16 @@
-image:
-  repository: fadidasus/order-sys
-  tag: "landing-page-cd1248d"
-  pullPolicy: IfNotPresent
+# =============================================================================
+#  Prod environment overrides (merged on top of values.yaml).
+#  Selected by the HelmRelease via: valuesFiles: [values.yaml, values-prod.yaml]
+# =============================================================================
+
+ingress:
+  hosts:
+    - syrianorder.com
+  tlsSecret: landing-page-prod-tls
+  clusterIssuer: letsencrypt-prod
 
 replicaCount: 1
 
-# nginx-unprivileged starts instantly; surge=1 is safe
 deploymentStrategy:
   type: RollingUpdate
   rollingUpdate:
@@ -20,7 +25,6 @@ resources:
     cpu: 200m
     memory: 128Mi
 
-# nginx-unprivileged listens on 8080 (not 80)
 readinessProbe:
   httpGet:
     path: /
@@ -36,13 +40,3 @@ livenessProbe:
   initialDelaySeconds: 10
   periodSeconds: 10
   failureThreshold: 3
-
-service:
-  port: 8080
-
-ingress:
-  # Overridden per environment in values-prod.yaml / values-dev.yaml
-  hosts:
-    - syrianorder.com
-  tlsSecret: landing-page-prod-tls
-  clusterIssuer: letsencrypt-prod
